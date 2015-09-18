@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<iframe id="aaa" src="about:blank"></iframe>
+<input id="btn" type="button" value="获取ifram内容"/>
+
+<script>
+    document.getElementById("aaa").contentWindow.document.designMode= "On";
+    document.getElementById("btn").onclick=function()
+    {
+        alert(GetIframeInnerHtml(document.getElementById("aaa")));
+    }
+    function GetIframeInnerHtml(objIFrame)
+    {
+        var iFrameHTML = "";
+        if (objIFrame.contentDocument)
+        {
+            // For NS6
+            iFrameHTML = objIFrame.contentDocument.innerHTML;
+        }
+        else if (objIFrame.contentWindow)
+        {
+            // For IE5.5 and IE6
+            iFrameHTML = objIFrame.contentWindow.document.body.innerHTML;
+        }
+        else if (objIFrame.document)
+        {
+            // For IE5
+            iFrameHTML = objIFrame.document.body.innerHTML;
+        }
+        return iFrameHTML;
+    }
+
+
+</script>
+</body>
+</html>
