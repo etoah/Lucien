@@ -1,0 +1,12 @@
+.editors
+{
+    position: absolute;
+    top:30px;
+    bottom: 0;
+
+}
+.editor
+{
+    border-left:1px solid #aaa;
+    height: 100%;
+}
