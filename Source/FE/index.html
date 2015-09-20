@@ -4,71 +4,40 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="css/normalize.css"/>
-
     <link rel="stylesheet" href="css/codemirror.css"/>
     <link rel="stylesheet" href="css/layout.css"/>
     <link rel="stylesheet" href="css/editor.css"/>
+    <link rel="stylesheet" href="css/nav.css"/>
+    <script src="js/require.js"  defer async="true"  data-main="js/main"></script>
 </head>
 <body>
 
 <div class="wrap">
-    <div class="nav"></div>
-    <div class="container editors">
+    <div class="nav"><span id="play" class="play"></span></div>
+    <div id="editors" class="container editors">
         <div class="col editor" style="width: 33.3%;">
             <textarea id="html" name="code">
-<html style="color: green">
-<!-- this is a comment -->
-<head>
-    <title>Mixed HTML Example</title>
-    <style type="text/css">
-        h1 {
-            font-family: comic sans;
-            color: #f0f;
-        }
-
-        div {
-            background: yellow !important;
-        }
-
-        body {
-            max-width: 50em;
-            margin: 1em 2em 1em 5em;
-        }
-    </style>
-</head>
-<body>
 <h1>Mixed HTML Example</h1>
-<script>
-    function jsFunc(arg1, arg2) {
-        if (arg1 && arg2) document.body.innerHTML = "achoo";
-    }
-</script>
-</body>
-</html>
+                <div></div>
+
             </textarea>
-
-
         </div>
         <div class="col editor" style="width: 33.3%;">
             <textarea id="css" name="code">
-.editors
-{
-    position: absolute;
-    top:30px;
-    bottom: 0;
-
+h1 {
+    font-family: comic sans;
+    color: #f0f;
 }
-.editor
-{
-    border-left:1px solid #aaa;
-    height: 100%;
+div {
+    background: yellow !important;
+                height:100px;
+                width:100px;
 }
 
-.CodeMirror
-{
-    height: 100%;
+body {
+    max-width: 50em;
+    margin: 1em 2em 1em 5em;
 }
-
 
             </textarea>
 
@@ -88,25 +57,19 @@ function(mod) {
 
         </div>
     </div>
+    <div id="result" class="container editors">
+
+        <iframe src="" frameborder="0"></iframe>
+
+    </div>
 </div>
 
 
-<script src="js/codemirror.js"></script>
-<script src="js/htmlmixed.js"></script>
-<script src="js/css.js"></script>
-<script src="js/javascript.js"></script>
-<script src="js/xml.js"></script>
-<script>
-    var htmlEditor = CodeMirror.fromTextArea(document.getElementById("html"),{
-        mode:  "htmlmixed"
-    });
-    var cssEditor = CodeMirror.fromTextArea(document.getElementById("css"),{
-        mode:  "css"
-    });
-    var jsEditor = CodeMirror.fromTextArea(document.getElementById("javascript"),{
-        mode:  "javascript"
-    });
+<!--<script src="js/codemirror.js"></script>-->
+<!--<script src="js/htmlmixed.js"></script>-->
+<!--<script src="js/css.js"></script>-->
+<!--<script src="js/javascript.js"></script>-->
+<!--<script src="js/xml.js"></script>-->
 
-</script>
 </body>
 </html>
