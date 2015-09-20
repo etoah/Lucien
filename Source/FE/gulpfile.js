@@ -26,7 +26,7 @@ gulp.task('scripts', function() {
     return gulp.src('js/*.js')
        // .pipe(jshint('.jshintrc'))
        // .pipe(jshint.reporter('default'))
-        .pipe(concat('index.js'))
+       // .pipe(concat('index.js'))
         .pipe(gulp.dest('dist/scripts'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(uglify())

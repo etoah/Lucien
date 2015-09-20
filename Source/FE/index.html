@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="css/normalize.css"/>
+
+    <link rel="stylesheet" href="css/codemirror.css"/>
     <link rel="stylesheet" href="css/layout.css"/>
     <link rel="stylesheet" href="css/editor.css"/>
 </head>
@@ -12,12 +14,99 @@
 <div class="wrap">
     <div class="nav"></div>
     <div class="container editors">
-        <div class="col editor" style="width: 33.3%;"></div>
-        <div class="col editor" style="width: 33.3%;"></div>
-        <div class="col editor" style="width: 33.2%;"></div>
+        <div class="col editor" style="width: 33.3%;">
+            <textarea id="html" name="code">
+<html style="color: green">
+<!-- this is a comment -->
+<head>
+    <title>Mixed HTML Example</title>
+    <style type="text/css">
+        h1 {
+            font-family: comic sans;
+            color: #f0f;
+        }
+
+        div {
+            background: yellow !important;
+        }
+
+        body {
+            max-width: 50em;
+            margin: 1em 2em 1em 5em;
+        }
+    </style>
+</head>
+<body>
+<h1>Mixed HTML Example</h1>
+<script>
+    function jsFunc(arg1, arg2) {
+        if (arg1 && arg2) document.body.innerHTML = "achoo";
+    }
+</script>
+</body>
+</html>
+            </textarea>
+
+
+        </div>
+        <div class="col editor" style="width: 33.3%;">
+            <textarea id="css" name="code">
+.editors
+{
+    position: absolute;
+    top:30px;
+    bottom: 0;
+
+}
+.editor
+{
+    border-left:1px solid #aaa;
+    height: 100%;
+}
+
+.CodeMirror
+{
+    height: 100%;
+}
+
+
+            </textarea>
+
+        </div>
+        <div class="col editor" style="width: 33.2%;">
+             <textarea id="javascript" name="code">
+function(mod) {
+  if (typeof exports == "object" && typeof module == "object") // CommonJS
+    mod(require("codemirror"));
+  else if (typeof define == "function" && define.amd) // AMD
+    define(["codemirror"], mod);
+  else // Plain browser env
+    mod(CodeMirror);
+}
+
+             </textarea>
+
+        </div>
     </div>
 </div>
 
 
+<script src="js/codemirror.js"></script>
+<script src="js/htmlmixed.js"></script>
+<script src="js/css.js"></script>
+<script src="js/javascript.js"></script>
+<script src="js/xml.js"></script>
+<script>
+    var htmlEditor = CodeMirror.fromTextArea(document.getElementById("html"),{
+        mode:  "htmlmixed"
+    });
+    var cssEditor = CodeMirror.fromTextArea(document.getElementById("css"),{
+        mode:  "css"
+    });
+    var jsEditor = CodeMirror.fromTextArea(document.getElementById("javascript"),{
+        mode:  "javascript"
+    });
+
+</script>
 </body>
 </html>
