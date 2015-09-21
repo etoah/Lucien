@@ -13,6 +13,7 @@ define(['codemirror','local', 'htmlmixed', 'css', 'javascript', 'xml'], function
         mode: "javascript"
     });
     var STATUS_KEY="isPlay";
+
     function play(editors) {
         if(local(STATUS_KEY)==="true")return;
         var html = editors.html.getValue(),
@@ -62,7 +63,6 @@ define(['codemirror','local', 'htmlmixed', 'css', 'javascript', 'xml'], function
 
 
     }
-
 
     return {
         html: htmlEditor,

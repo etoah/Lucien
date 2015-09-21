@@ -21,11 +21,11 @@
 
 .stop:before {
     content: '';
-    height: 22px;
-    width: 22px;
+    height: 12px;
+    width: 12px;
     display: block;
     background: #333;
     position: absolute;
-    top: 4px;
+    top: 9px;
     left: -2px;
 }
