@@ -18,7 +18,7 @@
         <div class="col editor" style="width: 33.3%;">
             <textarea id="html" name="code">
 <h1>Mixed HTML Example</h1>
-                <div></div>
+                <div id="a"></div>
 
             </textarea>
         </div>
@@ -44,14 +44,9 @@ body {
         </div>
         <div class="col editor" style="width: 33.2%;">
              <textarea id="javascript" name="code">
-function(mod) {
-  if (typeof exports == "object" && typeof module == "object") // CommonJS
-    mod(require("codemirror"));
-  else if (typeof define == "function" && define.amd) // AMD
-    define(["codemirror"], mod);
-  else // Plain browser env
-    mod(CodeMirror);
-}
+document.getElementById('a').onclick=function(){
+                 alert("a");
+                 }
 
              </textarea>
 
@@ -59,17 +54,11 @@ function(mod) {
     </div>
     <div id="result" class="container editors">
 
-        <iframe src="" frameborder="0"></iframe>
+        <iframe id="resultframe"  frameborder="0"></iframe>
 
     </div>
 </div>
 
-
-<!--<script src="js/codemirror.js"></script>-->
-<!--<script src="js/htmlmixed.js"></script>-->
-<!--<script src="js/css.js"></script>-->
-<!--<script src="js/javascript.js"></script>-->
-<!--<script src="js/xml.js"></script>-->
 
 </body>
 </html>

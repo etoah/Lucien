@@ -6,12 +6,10 @@
 
 
 
-require(['editor','domready'], function (editors,doc){
+require(['editor','domready!'], function (editors,doc){
     document.getElementById("play").addEventListener("click",function(){
-        document.getElementById('editors').style.display="none";
-        document.getElementById('result').style.display="block";
-
-        editors.play();
+        editors.play(editors);
+        editors.styleToggle();
 
     })
 
