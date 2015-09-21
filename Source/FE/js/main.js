@@ -7,9 +7,11 @@
 
 
 require(['editor','domready!'], function (editors,doc){
+
+    editors.init();
     document.getElementById("play").addEventListener("click",function(){
-        editors.play(editors);
-        editors.styleToggle();
+        editors.play();
+        editors.styleToggle(false);
 
     })
 

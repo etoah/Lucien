@@ -14,11 +14,11 @@ define(['codemirror','local', 'htmlmixed', 'css', 'javascript', 'xml'], function
     });
     var STATUS_KEY="isPlay";
 
-    function play(editors) {
-        if(local(STATUS_KEY)==="true")return;
-        var html = editors.html.getValue(),
-            css = editors.css.getValue(),
-            js = editors.js.getValue(),
+    function play(mustRun) {
+        if(!mustRun&&local(STATUS_KEY)==="true")return;
+        var html = this.html.getValue(),
+            css = this.css.getValue(),
+            js = this.js.getValue(),
             resultDoc = window.frames[0].document;
         resultDoc.querySelector("body").innerHTML = html;
         appendStyle(resultDoc, css);
@@ -42,11 +42,13 @@ define(['codemirror','local', 'htmlmixed', 'css', 'javascript', 'xml'], function
         script.innerHTML = js;
         doc.querySelector("body").appendChild(script);
     }
-    function styleToggle() {
+    function styleToggle(isInit) {
         var editorsStyle = document.getElementById('editors').style,
             resultStyle = document.getElementById('result').style,
-            playEle = document.getElementById('play');
-        if (local(STATUS_KEY)==="true") {
+            playEle = document.getElementById('play'),
+            isReversal=local(STATUS_KEY)==="true";
+
+        if (isInit?!isReversal:isReversal) {
             editorsStyle.display = "block";
             resultStyle.display = "none";
             playEle.className = "play";
@@ -64,12 +66,22 @@ define(['codemirror','local', 'htmlmixed', 'css', 'javascript', 'xml'], function
 
     }
 
+    function init()
+    {
+        if (local(STATUS_KEY)==="true")
+        {
+            this.play(true);
+            styleToggle(true);
+        }
+    }
+
     return {
         html: htmlEditor,
         css: cssEditor,
         js: jsEditor,
         'play': play,
-        'styleToggle':styleToggle
+        'styleToggle':styleToggle,
+        'init':init
     }
 
 });
