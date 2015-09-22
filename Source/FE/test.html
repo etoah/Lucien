@@ -2,13 +2,8 @@
 <html>
 <head>
 	<title>Emmet for CodeMirror 4</title>
-	<link rel="stylesheet" href="../css/codemirror.css" />
-	<script src="../js/codemirror.js"></script>
-	<script src="../js/xml.js"></script>
-	<script src="../js/css.js"></script>
-	<script src="../js/htmlmixed.js"></script>
-	<script src="../js/emmet.js"></script>
-	
+	<script src="js/require.js"  defer async="true"  data-main="js/main1"></script>
+	<link rel="stylesheet" href="./css/codemirror.css" />
 	<style>
 	.CodeMirror {
 		border: 1px solid black;
@@ -41,12 +36,9 @@
 	</textarea></form>
 
 	<script>
-		var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-			mode : "text/html",
-			lineNumbers : true,
-			profile: 'xhtml' /* define Emmet output profile */
-		});
-		emmetCodeMirror(editor);
+
+
+
 	</script>
 </body>
 </html>

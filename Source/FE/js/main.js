@@ -3,9 +3,6 @@
  */
 
 
-
-
-
 require(['editor','domready!'], function (editors,doc){
 
     editors.init();
