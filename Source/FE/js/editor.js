@@ -2,7 +2,7 @@
  * Created by Lucien on 9/20/2015.
  */
 
-define(['codemirror', 'local', 'htmlmixed', 'xml', 'css', 'javascript'], function (CodeMirror, local) {
+define(['codemirror', 'storage/local', 'htmlmixed', 'xml', 'css', 'javascript'], function (CodeMirror, local) {
     var htmlEditor = CodeMirror.fromTextArea(document.getElementById("html"), {
         mode: "text/html",
         profile: 'xhtml'
