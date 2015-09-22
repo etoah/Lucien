@@ -1,1 +1,1 @@
-.nav,.wrap{position:absolute;width:100%}.container,.nav,.wrap{width:100%}.wrap{height:100%}.nav{height:30px;background-color:#4caf50}.container{position:relative}.container:after{content:"";display:block;clear:both}.col{float:left;box-sizing:content-box}
+.nav,.wrap{position:absolute;width:100%}.container,.nav,.wrap{width:100%}.wrap{height:100%}.nav{height:30px;line-height:30px;background-color:#4caf50}.container{position:relative}.container:after{content:"";display:block;clear:both}.col{float:left;box-sizing:content-box}

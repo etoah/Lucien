@@ -2,22 +2,19 @@
  * Created by Lucien on 9/20/2015.
  */
 
-define(['codemirror', 'local', 'htmlmixed', 'xml', 'css', 'javascript'], function (CodeMirror, local) {
+define(['codemirror', 'local', 'htmlmixed', 'emmet', 'xml', 'css', 'javascript'], function (CodeMirror, local, htmlmixed, emmetCodeMirror) {
     var htmlEditor = CodeMirror.fromTextArea(document.getElementById("html"), {
         mode: "text/html",
         profile: 'xhtml'
     });
     var cssEditor = CodeMirror.fromTextArea(document.getElementById("css"), {
-        mode: "css",
-        profile:"css"
+        mode: "css"
     });
     var jsEditor = CodeMirror.fromTextArea(document.getElementById("javascript"), {
         mode: "javascript"
     });
+    emmetCodeMirror(htmlEditor);
     var STATUS_KEY = "isPlay";
-
-
-    window["CodeMirror"]=CodeMirror;//”√”⁄emmet
 
     function play(mustRun) {
         if (!mustRun && local(STATUS_KEY) === "true")return;

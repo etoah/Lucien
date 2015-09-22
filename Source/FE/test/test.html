@@ -41,12 +41,20 @@
 	</textarea></form>
 
 	<script>
-		var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-			mode : "text/html",
-			lineNumbers : true,
-			profile: 'xhtml' /* define Emmet output profile */
-		});
-		emmetCodeMirror(editor);
+
+		(function(){
+			var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+				mode : "text/html",
+				lineNumbers : true,
+				profile: 'xhtml' /* define Emmet output profile */
+			});
+			emmetCodeMirror(editor);
+
+
+		})();
+
+
+
 	</script>
 </body>
 </html>

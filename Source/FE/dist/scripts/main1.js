@@ -3,16 +3,14 @@
  */
 
 
-require(['codemirror', 'htmlmixed', 'xml', 'css', 'javascript'], function (CodeMirror,a,b,c,d){
+require(['codemirror', 'htmlmixed', 'xml', 'css', 'javascript','emmet','domready!'], function (CodeMirror,a,b,c,d,emmetCodeMirror){
 
     var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
         mode : "text/html",
         lineNumbers : true,
         profile: 'xhtml' /* define Emmet output profile */
     });
-    //emmetCodeMirror(editor);
-    window["CodeMirror"]=CodeMirror;
-    require(['emmet.min'],function(){});
+    emmetCodeMirror(editor);
 
 });
 
