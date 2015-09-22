@@ -3,7 +3,7 @@
  */
 
 
-define(['storage/storage'],function(storage){
+define(['storage'],function(storage){
 
     return function(key, value, isDel){
        return storage(key, value, isDel,localStorage);

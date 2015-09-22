@@ -2,7 +2,16 @@
  * Created by Lucien on 9/20/2015.
  */
 
-require(['editor', 'domready!'], function (editors, doc) {
+
+requirejs.config({
+    baseUrl: 'js/lib',
+
+    paths: {
+        app: '../app'
+    }
+});
+
+require(['app/editor', 'domready!'], function (editors) {
 
     editors.init();
     document.getElementById("play").addEventListener("click", function () {
