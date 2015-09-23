@@ -20,8 +20,16 @@ require(['app/editor', 'domready!'], function (editors) {
 
     });
 
-    //最后才加载emet
+    //延迟加载
     require(['emmet']);
+    require(['app/Code','app/editor'],function(Code,editor){
+
+        document.getElementById("play").addEventListener("click", function () {
+            new Code(editor.html.getValue(),editor.css.getValue(),editor.js.getValue()).add();
+        });
+
+
+    });
 
 });
 
