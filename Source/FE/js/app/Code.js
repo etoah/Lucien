@@ -1,7 +1,7 @@
 /**
  * Created by Lucien on 9/23/2015.
  */
-define(['Entity'],function(Entity){
+define(['Entity','storage','app/config'],function(Entity,storage,config){
 
 
     var STORE_NAME='Code';
@@ -22,12 +22,19 @@ define(['Entity'],function(Entity){
     Code.prototype=new Entity();
     Code.prototype.constructor=Code;
 
-    //
-    //Code.prototype.put=function(){
-    //    var f= this.prototype.put;
-    //    this.entity.synctime=new Date();
-    //    f.apply(this,arguments);
-    //
-    //};
+
+    Code.prototype.add=function(onsuccess, onerror){
+
+
+        this.entity.synctime=new Date();
+
+        this.factory.put(this.entity, function(event){
+
+            storage[config.storeKey]=event.target.result.id;
+
+        }, onerror)
+
+
+    };
     return Code;
 });

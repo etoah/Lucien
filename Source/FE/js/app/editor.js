@@ -75,6 +75,8 @@ define(['codemirror', 'local', 'htmlmixed', 'xml', 'css', 'javascript'], functio
     }
 
     function init() {
+
+
         if (local(STATUS_KEY) === "true") {
             this.play(true);
             styleToggle(true);
