@@ -2,7 +2,7 @@
  * Created by Lucien on 9/20/2015.
  */
 
-define(['codemirror', 'local', 'htmlmixed', 'xml', 'css', 'javascript'], function (CodeMirror, local) {
+define(['codemirror', 'local','app/Code', 'htmlmixed', 'xml', 'css', 'javascript'], function (CodeMirror, local,Code) {
     var htmlEditor = CodeMirror.fromTextArea(document.getElementById("html"), {
         mode: "text/html",
         profile: 'xhtml'
@@ -17,7 +17,7 @@ define(['codemirror', 'local', 'htmlmixed', 'xml', 'css', 'javascript'], functio
     var STATUS_KEY = "isPlay";
 
 
-    window["CodeMirror"]=CodeMirror;//ÓÃÓÚemmet
+    window["CodeMirror"]=CodeMirror;//ï¿½ï¿½ï¿½ï¿½emmet
 
     function play(mustRun) {
         if (!mustRun && local(STATUS_KEY) === "true")return;
@@ -75,6 +75,19 @@ define(['codemirror', 'local', 'htmlmixed', 'xml', 'css', 'javascript'], functio
     }
 
     function init() {
+
+        var code=new  Code();
+        code.getLatest((function(that){
+
+            return function(entity){
+            if(entity)
+            {
+                that.html.setValue(entity.html);
+                that.css.setValue(entity.css);
+                that.js.setValue(entity.js);
+            }
+
+        }})(this));
 
 
         if (local(STATUS_KEY) === "true") {
