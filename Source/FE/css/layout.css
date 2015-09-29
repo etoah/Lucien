@@ -29,3 +29,54 @@
     float: left;
     box-sizing: content-box;
 }
+
+
+#listPanel
+{
+
+    position: relative;
+    height: 100%;
+    width: 200px;
+
+    display: none;
+    background-color:#cccccc;
+    opacity:0.8;
+    z-index: 99;
+    overflow: auto;
+
+}
+
+.code-list
+{
+    padding-top: 20px;
+    list-style: none;
+
+}
+
+.code-list>li
+{
+    cursor: pointer;
+    color: #0055aa;
+    line-height: 1.5em;
+    overflow: hidden;
+    opacity:1;
+}
+
+.list-con
+{
+
+}
+
+#listGrip
+{
+    display: block;
+    position: fixed;
+    padding: 5px;
+    border-radius: 0 10px 10px 0;
+    bottom: 10px;
+    z-index: 100;
+    cursor: pointer;
+    background-color: #0055aa;
+    color: #fff;
+
+}

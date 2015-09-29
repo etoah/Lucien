@@ -2,7 +2,7 @@
  * Created by Lucien on 9/20/2015.
  */
 
-define(['codemirror', 'local','app/Code', 'htmlmixed', 'xml', 'css', 'javascript'], function (CodeMirror, local,Code) {
+define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css', 'javascript'], function (CodeMirror, local,Code,config) {
     var htmlEditor = CodeMirror.fromTextArea(document.getElementById("html"), {
         mode: "text/html",
         profile: 'xhtml'
@@ -74,17 +74,18 @@ define(['codemirror', 'local','app/Code', 'htmlmixed', 'xml', 'css', 'javascript
 
     }
 
-    function init() {
+    function init(id) {
 
-
-        new Code().getLatest().then((function(that){
+        new Code().get(id||parseInt(local(config.storeKey))||0).then((function(that){
                 return function(entity){
                     if(entity)
                     {
                         that.html.setValue(entity.html);
                         that.css.setValue(entity.css);
                         that.js.setValue(entity.js);
+                        local(config.storeKey,entity.id);
                     }
+
 
                 }
         })(this));

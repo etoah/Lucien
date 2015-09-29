@@ -14,8 +14,17 @@
 <body>
 
 <div class="wrap">
-    <div class="nav"><span id="newCase">新</span><span id="play" class="play"></span></div>
-    <div id="editors" class="container editors">
+    <nav class="nav"><span id="newCase">新</span><span id="play" class="play"></span></nav>
+    <aside id="listPanel">
+
+        <ul class="code-list" id="codeUL">
+            <li>测试一下目录的效果</li>
+            <li>测试一下目录的效果2</li>
+            <li>测试一下目录的效果3</li>
+        </ul>
+
+    </aside>
+    <section id="editors" class="container editors">
         <div class="col editor" style="width: 36%;">
             <textarea id="html" name="code"></textarea>
         </div>
@@ -27,12 +36,14 @@
              <textarea id="javascript" name="code"></textarea>
 
         </div>
-    </div>
-    <div id="result" class="container editors">
+    </section>
+    <section id="result" class="container editors">
 
         <iframe id="resultframe"  frameborder="0"></iframe>
 
-    </div>
+    </section>
+    <span id="listGrip">...</span>
+
 </div>
 <script>
 
