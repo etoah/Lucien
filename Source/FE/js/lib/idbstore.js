@@ -506,7 +506,6 @@
 
       var hasSuccess = false,
           result = null;
-      console.log(this.db);
       var getTransaction = this.db.transaction([this.storeName], this.consts.READ_ONLY);
       getTransaction.oncomplete = function () {
         var callback = hasSuccess ? onSuccess : onError;

@@ -19,7 +19,7 @@ define(['entity', 'local', 'app/config', 'Util'], function (Entity, local, confi
 
     Code.prototype.add = function () {
         this.entity.synctime = new Date().format("yyyyMMddhhmmss");
-        this.entity.id=local(config.storeKey)||undefined;
+        this.entity.id=parseInt(local(config.storeKey))||null;
         return Entity.add(STORE_NAME,this.entity).then(function(data){
 
              return new Promise(function(resolve, reject){

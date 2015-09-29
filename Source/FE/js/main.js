@@ -29,9 +29,9 @@ require(['app/editor','require','domready!'], function (editors) {
 
 
 
-        //document.getElementById("play").addEventListener("click", function () {
-        //    new Code(editor.html.getValue(),editor.css.getValue(),editor.js.getValue()).add();
-        //});
+        document.getElementById("play").addEventListener("click", function () {
+            new Code(editor.html.getValue(),editor.css.getValue(),editor.js.getValue()).add();
+        });
 
         require(['emmet']);
 
