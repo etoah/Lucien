@@ -21,19 +21,15 @@ define(['app/Code','app/editor'], function (Code,editor) {
 
     function registerEvent()
     {
-        var lis= ul.querySelectorAll("li"),
-            i= 0,
-            len=lis.length,
-            id;
-        for(;i<len;i++)
-        {
-            lis[i].addEventListener("click",function(){
+        ul.addEventListener("click",function(event){
 
-                id=parseInt(this.getAttribute("data-id"))|0;
+            var src=event.srcElement||event.target;
+            if(src.nodeName&&src.nodeName==="LI")
+            {
+                id=parseInt(src.getAttribute("data-id"))|0;
                 editor.init(id);
-
-            })
-        }
+            }
+        })
     }
 
     function showList()
