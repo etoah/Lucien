@@ -12,19 +12,19 @@ define(['entity', 'local', 'app/config', 'Util'], function (Entity, local, confi
         this.entity.css = css;
         this.entity.js = js;
         this.entity.tag = tag;
-        this.entity.id=id;
+        id&&(this.entity.id=id);
 
     }
 
 
     Code.prototype.add = function () {
         this.entity.synctime = new Date().format("yyyyMMddhhmmss");
-        this.entity.id=parseInt(local(config.storeKey))||null;
+        parseInt(local(config.storeKey))&&(this.entity.id=parseInt(local(config.storeKey)));
         return Entity.add(STORE_NAME,this.entity).then(function(data){
 
              return new Promise(function(resolve, reject){
                  local(config.storeKey,data);
-                 this.entity.id=data;
+                 this.entity&&(this.entity.id=data);
                  resolve(this.entity);
              });
 
@@ -32,7 +32,7 @@ define(['entity', 'local', 'app/config', 'Util'], function (Entity, local, confi
     };
 
     Code.prototype.get = function (id) {
-        return Entity.get(STORE_NAME,id||this.entity.id).then(function(data){
+        return Entity.get(STORE_NAME,id||this.entity.id||0).then(function(data){
 
             return new Promise(function(resolve, reject){
                 this.entity=data;
