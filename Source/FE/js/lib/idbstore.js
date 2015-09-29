@@ -75,9 +75,9 @@
    * @param {Function} [onStoreReady] A callback to be called when the store
    * is ready to be used.
    * @example
-      // create a store for customers with an additional index over the
-      // `lastname` property.
-      var myCustomerStore = new IDBStore({
+   // create a store for customers with an additional index over the
+   // `lastname` property.
+   var myCustomerStore = new IDBStore({
         dbVersion: 1,
         storeName: 'customer-index',
         keyPath: 'customerid',
@@ -88,8 +88,8 @@
         ]
       });
    * @example
-      // create a generic store
-      var myCustomerStore = new IDBStore({
+   // create a generic store
+   var myCustomerStore = new IDBStore({
         storeName: 'my-data-store',
         onStoreReady: function(){
           // start working with the store.
@@ -287,7 +287,7 @@
         }
 
         if(this.db){
-          this.onStoreReady();
+          this.onStoreReady(this);
           return;
         }
 
@@ -343,7 +343,7 @@
           this.onError(new Error('Cannot delete index(es) "' + existingIndexes.toString() + '" for current version. Please bump version number to ' + ( this.dbVersion + 1 ) + '.'));
         }
 
-        preventSuccessCallback || this.onStoreReady();
+        preventSuccessCallback || this.onStoreReady(this);
       }.bind(this);
 
       openRequest.onupgradeneeded = function(/* IDBVersionChangeEvent */ event){
@@ -436,22 +436,22 @@
      *  failed.
      * @returns {IDBTransaction} The transaction used for this operation.
      * @example
-        // Storing an object, using inline keys (the default scenario):
-        var myCustomer = {
+     // Storing an object, using inline keys (the default scenario):
+     var myCustomer = {
           customerid: 2346223,
           lastname: 'Doe',
           firstname: 'John'
         };
-        myCustomerStore.put(myCustomer, mySuccessHandler, myErrorHandler);
-        // Note that passing success- and error-handlers is optional.
+     myCustomerStore.put(myCustomer, mySuccessHandler, myErrorHandler);
+     // Note that passing success- and error-handlers is optional.
      * @example
-        // Storing an object, using out-of-line keys:
-       var myCustomer = {
+     // Storing an object, using out-of-line keys:
+     var myCustomer = {
          lastname: 'Doe',
          firstname: 'John'
        };
-       myCustomerStore.put(2346223, myCustomer, mySuccessHandler, myErrorHandler);
-      // Note that passing success- and error-handlers is optional.
+     myCustomerStore.put(2346223, myCustomer, mySuccessHandler, myErrorHandler);
+     // Note that passing success- and error-handlers is optional.
      */
     put: function (key, value, onSuccess, onError) {
       if (this.keyPath !== null) {
@@ -506,7 +506,7 @@
 
       var hasSuccess = false,
           result = null;
-      
+      console.log(this.db);
       var getTransaction = this.db.transaction([this.storeName], this.consts.READ_ONLY);
       getTransaction.oncomplete = function () {
         var callback = hasSuccess ? onSuccess : onError;
@@ -584,7 +584,7 @@
       };
       batchTransaction.onabort = onError;
       batchTransaction.onerror = onError;
-      
+
       var count = dataArray.length;
       var called = false;
       var hasSuccess = false;
@@ -778,11 +778,11 @@
 
      // arrayType == 'sparse':
      // data is a sparse array containing two entries and having a length of 3:
-       [Object, 2: Object]
-         0: Object
-         2: Object
-         length: 3
-         __proto__: Array[0]
+     [Object, 2: Object]
+     0: Object
+     2: Object
+     length: 3
+     __proto__: Array[0]
      // calling forEach on data will result in the callback being called two
      // times, with the index parameter matching the index of the key in the
      // keyArray.
@@ -790,23 +790,23 @@
      // arrayType == 'dense':
      // data is a dense array containing three entries and having a length of 3,
      // where data[1] is of type undefined:
-       [Object, undefined, Object]
-         0: Object
-         1: undefined
-         2: Object
-         length: 3
-         __proto__: Array[0]
+     [Object, undefined, Object]
+     0: Object
+     1: undefined
+     2: Object
+     length: 3
+     __proto__: Array[0]
      // calling forEach on data will result in the callback being called three
      // times, with the index parameter matching the index of the key in the
      // keyArray, but the second call will have undefined as first argument.
 
      // arrayType == 'skip':
      // data is a dense array containing two entries and having a length of 2:
-       [Object, Object]
-         0: Object
-         1: Object
-         length: 2
-         __proto__: Array[0]
+     [Object, Object]
+     0: Object
+     1: Object
+     length: 2
+     __proto__: Array[0]
      // calling forEach on data will result in the callback being called two
      // times, with the index parameter not matching the index of the key in the
      // keyArray.

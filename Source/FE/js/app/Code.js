@@ -1,77 +1,52 @@
 /**
  * Created by Lucien on 9/23/2015.
  */
-define(['Entity', 'local', 'app/config', 'Util'], function (Entity, local, config) {
+define(['entity', 'local', 'app/config', 'Util'], function (Entity, local, config) {
 
 
     var STORE_NAME = 'Code';
 
-    function Code(html, css, js, tag) {
-
-        Entity.call(this, STORE_NAME);
-
+    function Code(html, css, js, tag,id) {
+        this.entity={};
         this.entity.html = html;
         this.entity.css = css;
         this.entity.js = js;
         this.entity.tag = tag;
+        this.entity.id=id;
 
     }
 
-    Code.prototype = new Entity();
-    Code.prototype.constructor = Code;
 
-    Code.prototype.add = function (onsuccess, onerror) {
-
-
+    Code.prototype.add = function () {
         this.entity.synctime = new Date().format("yyyyMMddhhmmss");
+        this.entity.id=local(config.storeKey)||undefined;
+        return Entity.add(STORE_NAME,this.entity).then(function(data){
 
+             return new Promise(function(resolve, reject){
+                 local(config.storeKey,data);
+                 this.entity.id=data;
+                 resolve(this.entity);
+             });
 
-        if (local(config.storeKey)) {
-            this.factory.put(local(config.storeKey), this.entity, function (data) {
-
-                local(config.storeKey, data);
-                onsuccess&&onsuccess(data);
-
-            }, function (data) {
-
-                onerror&&onerror(data);
-                console.log("IndexedDB error: " + evt.target.errorCode);
-
-            });
-            return;
-        }
-        else {
-
-            this.factory.put(this.entity, function (data) {
-
-                local(config.storeKey, data);
-                console.log("key:" + data + " saved");
-                onsuccess&&onsuccess(data);
-
-            }, function (evt) {
-
-                onerror&&onerror(data);
-                console.log("IndexedDB error: " + evt.target.errorCode);
-
-            })
-
-        }
-    };
-
-    Code.prototype.get = function (id, onsuccess, onerror) {
-
-        this.factory.get(id, function (data) {
-            this.entity = data;
-            onsuccess&&onsuccess(this.entity);
-        }, function (data) {
-            this.entity = null;
-            onerror&&onerror(data)
         });
-
     };
 
-    Code.prototype.getLatest = function (onsuccess) {
-        this.get(parseInt(local(config.storeKey)),onsuccess);
+    Code.prototype.get = function (id) {
+
+        return Entity.get(STORE_NAME,id||this.entity.id).then(function(data){
+
+            return new Promise(function(resolve, reject){
+                this.entity=data;
+                resolve(this.entity);
+            });
+
+        });
     };
+
+    Code.prototype.getLatest = function () {
+       return this.get(parseInt(local(config.storeKey))||0);
+    };
+
+
     return Code;
 });

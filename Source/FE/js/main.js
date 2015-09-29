@@ -11,7 +11,9 @@ requirejs.config({
     }
 });
 
-require(['app/editor', 'domready!'], function (editors) {
+require(['app/editor','require','domready!'], function (editors) {
+
+
 
     editors.init();
     document.getElementById("play").addEventListener("click", function () {
@@ -20,14 +22,18 @@ require(['app/editor', 'domready!'], function (editors) {
 
     });
 
+
+
     //ясЁы╪сть
-    require(['emmet']);
     require(['app/Code','app/editor'],function(Code,editor){
 
 
-        document.getElementById("play").addEventListener("click", function () {
-            new Code(editor.html.getValue(),editor.css.getValue(),editor.js.getValue()).add();
-        });
+
+        //document.getElementById("play").addEventListener("click", function () {
+        //    new Code(editor.html.getValue(),editor.css.getValue(),editor.js.getValue()).add();
+        //});
+
+        require(['emmet']);
 
 
     });

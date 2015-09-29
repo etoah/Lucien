@@ -6,60 +6,79 @@
  */
 define(['idbstore'],function(IDBStore){
 
-
-
-    function Entity(storeName)
+    function DBready(storeName)
     {
-        this.entity={
-
-        };
-
-        this.factory = new IDBStore({
-            storePrefix:'',
-            dbVersion:'0.0.1',
-            storeName: storeName,
-            keyPath: 'id',
-            autoIncrement: true
+        return new Promise(function(resolve,reject){
+            new IDBStore({
+                storePrefix:'',
+                dbVersion:'1',
+                storeName: storeName,
+                keyPath: 'id',
+                autoIncrement: true
+            },resolve);//'this' is IDBStore
         });
     }
 
-    Entity.prototype={
-        constructor:Entity,
-        add:function(onsuccess, onerror)
-        {
-            this.factory.put(this.entity, onsuccess, onerror)
-        },
-        update:function(onsuccess, onerror)
-        {
-            if(this.entity.id===null||this.entity.id===undefined)
-            {
-                throw("id undefined");
-            }
-            else{
-                this.factory.put(this.entity, onsuccess, onerror);
-            }
+    function add(storeName,value)
+    {
 
-        },
-        delete:function(id,onsuccess, onerror)
-        {
-            var key=id||this.entity.id;
-            this.factory.remove(key, onsuccess, onerror);
-        },
-        get:function(id, onsuccess, onerror){
-            var f=onsuccess;
-            onsuccess=function(entity){
+       return DBready(storeName).then(function(factory){
 
-                this.entity=entity;
-                f(enntiy);
-            };
-            this.factory.get(id, onsuccess, onerror);
-        },
-        getAll:function(onsuccess, onerror){
-            this.factory.getAll(onsuccess, onerror);
+             return new Promise(function(resolve,reject){
+
+                 factory.put(value, resolve, reject)
+            })
+        });
+    }
+
+
+
+    function update(storeName,value)
+    {
+        if(value.id===null||value.id===undefined)
+        {
+            throw("id undefined");
         }
+        return  add(storeName,value);
+    }
 
-    };
+
+    function _delete(storeName,id)
+    {
+        return DBready(storeName).then(function(factory) {
+            return new Promise(function (resolve, reject) {
+                factory.remove(id, resolve, reject);
+            });
+        });
+
+    }
+
+    function get(storeName,id)
+    {
+        return DBready(storeName).then(function(factory) {
+            return new Promise(function (resolve, reject) {
+                factory.get(id, resolve, reject);
+            });
+        });
+    }
 
 
-    return Entity;
+    function getAll(){
+
+        return DBready(storeName).then(function(factory) {
+            return new Promise(function (resolve, reject) {
+                factory.getAll(resolve, reject);
+            });
+        });
+    }
+
+    return {
+        'read':DBready,
+        'add':add,
+        'delete':_delete,
+        'get':get,
+        'getAll':getAll,
+        'update':update
+    }
+
 });

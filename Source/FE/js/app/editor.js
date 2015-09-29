@@ -76,19 +76,18 @@ define(['codemirror', 'local','app/Code', 'htmlmixed', 'xml', 'css', 'javascript
 
     function init() {
 
-        var code=new  Code();
-        code.getLatest((function(that){
 
-            return function(entity){
-            if(entity)
-            {
-                that.html.setValue(entity.html);
-                that.css.setValue(entity.css);
-                that.js.setValue(entity.js);
-            }
+        new Code().getLatest().then((function(that){
+                return function(entity){
+                    if(entity)
+                    {
+                        that.html.setValue(entity.html);
+                        that.css.setValue(entity.css);
+                        that.js.setValue(entity.js);
+                    }
 
-        }})(this));
-
+                }
+        })(this));
 
         if (local(STATUS_KEY) === "true") {
             this.play(true);
