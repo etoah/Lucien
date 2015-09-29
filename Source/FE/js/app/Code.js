@@ -4,13 +4,15 @@
 define(['entity', 'local', 'app/config', 'Util'], function (Entity, local, config) {
 
 
-    var STORE_NAME = 'Code';
+    var STORE_NAME = 'Code',
+        TITLE_LENGTH=15;
 
     function Code(html, css, js, tag,id) {
         this.entity={};
         this.entity.html = html;
         this.entity.css = css;
         this.entity.js = js;
+        this.entity.title=html&&(html.removeTag().replace(/(\n)+|(\r\n)+|\s+/g,'').substring(0,TITLE_LENGTH)+"...");
         this.entity.tag = tag;
         id&&(this.entity.id=id);
 
@@ -21,7 +23,6 @@ define(['entity', 'local', 'app/config', 'Util'], function (Entity, local, confi
         this.entity.synctime = new Date().format("yyyyMMddhhmmss");
         parseInt(local(config.storeKey))&&(this.entity.id=parseInt(local(config.storeKey)));
         return Entity.add(STORE_NAME,this.entity).then(function(data){
-
              return new Promise(function(resolve, reject){
                  local(config.storeKey,data);
                  this.entity&&(this.entity.id=data);

@@ -7,7 +7,7 @@
 define(function(){
 
     Date.prototype.format = function(fmt)
-    { //author: meizz
+    {
         var o = {
             "M+" : this.getMonth()+1,                 //ÔÂ·Ý
             "d+" : this.getDate(),                    //ÈÕ
@@ -23,6 +23,29 @@ define(function(){
             if(new RegExp("("+ k +")").test(fmt))
                 fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
         return fmt;
+    };
+
+
+    String.prototype.escape=function(){
+
+        return this.replace(/[<>"&]/g, function(match) {
+            switch (match) {
+                case "<":
+                    return "&lt;";
+                case ">":
+                    return "&gt;";
+                case "&":
+                    return "&amp;";
+                case "\"":
+                    return "&quot;";
+            }
+        });
+
+    }
+
+    String.prototype.removeTag=function(){
+
+       return this.replace(/<[^>].*?>/g,"");
     }
 
 
