@@ -23,12 +23,13 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
 
 
     //延迟加载
-    require(['app/Code', 'app/editor', 'local', 'app/config','app/codeList'], function (Code, editor, local,config,codeList) {
+    require(['app/Code', 'app/editor', 'local', 'app/config','app/codeList','app/keymapper'],
+        function (Code, editor, local,config,codeList,keyMap) {
 
 
         //点击运行保存事件
         document.getElementById("play").addEventListener("click", function () {
-            new Code(editor.html.getValue(), editor.css.getValue(), editor.js.getValue()).add();
+            Code.save(editor);
         });
 
         //新建事件
@@ -50,19 +51,30 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
             editor.newCase();
             var timer= setTimeout(function(){
                 new Code().delete(parseInt(local(config.storeKey))||0).then(function(){
-                    console.log("删除成功");
+                    console.log("success");
                 },function(){
-                    console.log("删除成功");
+                    console.log("failed");
                 });
             },1000);
 
         });
 
+        //快捷键
+        new keyMap("#editors").keyBind(['alt','s'],function(){
+            Code.save(editor);
+        });
+
+        new keyMap().keyBind(['alt','r'],function(){
+                Code.save(editor);
+                editors.play();
+                editors.styleToggle(false);
+            });
 
 
 
 
-        require(['emmet']);
+
+        require(['emmet','xml-fold','matchtags']);
 
 
     });

@@ -5,7 +5,9 @@
 define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css', 'javascript'], function (CodeMirror, local,Code,config) {
     var htmlEditor = CodeMirror.fromTextArea(document.getElementById("html"), {
         mode: "text/html",
-        profile: 'xhtml'
+        profile: 'xhtml',
+        matchTags: {bothTags: true},
+        extraKeys: {"Ctrl-J": "toMatchingTag"}
     });
     var cssEditor = CodeMirror.fromTextArea(document.getElementById("css"), {
         mode: "css",

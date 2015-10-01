@@ -51,6 +51,12 @@ define(['entity', 'local', 'app/config', 'Util'], function (Entity, local, confi
         return Entity.getAll(STORE_NAME);
     };
 
+    //static
+    Code.save=function(editor){
+       return new Code(editor.html.getValue(), editor.css.getValue(), editor.js.getValue()).add();
+
+    };
+
 
     return Code;
 });
