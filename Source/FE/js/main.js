@@ -65,7 +65,10 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
                 Code.save(editor);
                 editors.play();
                 editors.styleToggle(false);
-            });
+            }).keyBind(['alt','z'],function(){
+            codeList.togglePanel();
+            codeList.showList();
+        });
 
 
 
