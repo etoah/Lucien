@@ -15,11 +15,6 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
 
 
     editors.init();
-    document.getElementById("play").addEventListener("click", function () {
-        editors.play();
-        editors.styleToggle(false);
-
-    });
 
 
     //延迟加载
@@ -30,6 +25,8 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
         //点击运行保存事件
         document.getElementById("play").addEventListener("click", function () {
             Code.save(editor);
+            editors.play();
+            editors.styleToggle(false);
         });
 
         //新建事件
@@ -59,7 +56,7 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
 
         });
 
-        //快捷键
+        //快捷键设置
         new keyMap("#editors").keyBind(['alt','s'],function(){
             Code.save(editor);
         });
