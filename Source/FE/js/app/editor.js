@@ -96,13 +96,20 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
         }
     }
 
+
     return {
         html: htmlEditor,
         css: cssEditor,
         js: jsEditor,
         'play': play,
         'styleToggle': styleToggle,
-        'init': init
+        'init': init,
+        newCase:function(isClearKey){
+            !isClearKey||local(config.storeKey, 'null');
+            this.html.setValue("");
+            this.css.setValue("");
+            this.js.setValue("");
+        }
     }
 
 });

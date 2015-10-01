@@ -43,10 +43,9 @@ define(['entity', 'local', 'app/config', 'Util'], function (Entity, local, confi
         });
     };
 
-
-    //Code.prototype.getLatest = function () {
-      //  return this.get(parseInt(local(config.storeKey))||0);
-    //};
+    Code.prototype.delete = function (id) {
+        return Entity.delete(STORE_NAME,id);
+    };
 
     Code.prototype.getAll=function(){
         return Entity.getAll(STORE_NAME);

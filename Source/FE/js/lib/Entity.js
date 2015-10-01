@@ -56,6 +56,8 @@ define(['idbstore'], function (IDBStore) {
     }
 
 
+
+
     function getAll(storeName) {
 
         return DBready(storeName).then(function (factory) {

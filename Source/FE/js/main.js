@@ -33,18 +33,33 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
 
         //新建事件
         document.getElementById("newCase").addEventListener("click", function () {
-            local(config.storeKey, 'null');
-            editor.html.setValue("");
-            editor.css.setValue("");
-            editor.js.setValue("");
+            editor.newCase(true);
         });
 
         //列表展示事件
-        document.getElementById("listGrip").addEventListener("click", function () {
+        document.getElementById("listGrip").addEventListener("click", function (event) {
             codeList.togglePanel();
             codeList.showList();
+            event.stopPropagation();
 
         });
+
+        //删除事件
+        document.getElementById("delCase").addEventListener("click", function () {
+
+            editor.newCase();
+            var timer= setTimeout(function(){
+                new Code().delete(parseInt(local(config.storeKey))||0).then(function(){
+                    console.log("删除成功");
+                },function(){
+                    console.log("删除成功");
+                });
+            },1000);
+
+        });
+
+
+
 
 
         require(['emmet']);
