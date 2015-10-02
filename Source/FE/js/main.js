@@ -12,76 +12,70 @@ requirejs.config({
 });
 
 require(['app/editor', 'require', 'domready!'], function (editors) {
-
-
     editors.init();
+//å»¶è¿ŸåŠ è½½
+    require(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/keymapper', 'app/notice'],
+        function (Code, editor, local, config, codeList, keyMap, notice) {
 
 
-    //ÑÓ³Ù¼ÓÔØ
-    require(['app/Code', 'app/editor', 'local', 'app/config','app/codeList','app/keymapper','app/notice'],
-        function (Code, editor, local,config,codeList,keyMap,notice) {
-
-
-        //µã»÷ÔËĞĞ±£´æÊÂ¼ş
-        document.getElementById("play").addEventListener("click", function () {
-            Code.save(editor);
-            editors.play();
-            editors.styleToggle(false);
-        });
-
-        //ĞÂ½¨ÊÂ¼ş
-        document.getElementById("newCase").addEventListener("click", function () {
-            editor.newCase(true);
-        });
-
-        //ÁĞ±íÕ¹Ê¾ÊÂ¼ş
-        document.getElementById("listGrip").addEventListener("click", function (event) {
-            codeList.togglePanel();
-            codeList.showList();
-            event.stopPropagation();
-
-        });
-
-        //É¾³ıÊÂ¼ş
-        document.getElementById("delCase").addEventListener("click", function () {
-
-            editor.newCase();
-            var timer= setTimeout(function(){
-                new Code().delete(parseInt(local(config.storeKey))||0).then(function(){
-                    notice.success("success");
-                },function(){
-                    notice.error("failed");
-                });
-            },1000);
-
-        });
-
-        //¿ì½İ¼üÉèÖÃ
-        new keyMap("#editors").keyBind(['alt','s'],function(){
-            Code.save(editor).then(function(){
-                notice.success("success");
-            },function(){
-                notice.error("failed");
-            });
-        });
-
-        new keyMap().keyBind(['alt','r'],function(){
+            //ç‚¹å‡»è¿è¡Œä¿å­˜äº‹ä»¶
+            document.getElementById("play").addEventListener("click", function () {
                 Code.save(editor);
                 editors.play();
                 editors.styleToggle(false);
-            }).keyBind(['alt','z'],function(){
-            codeList.togglePanel();
-            codeList.showList();
+            });
+
+            //æ–°å»ºäº‹ä»¶
+            document.getElementById("newCase").addEventListener("click", function () {
+                editor.newCase(true);
+            });
+
+            //åˆ—è¡¨å±•ç¤ºäº‹ä»¶
+            document.getElementById("listGrip").addEventListener("click", function (event) {
+                codeList.togglePanel();
+                codeList.showList();
+                event.stopPropagation();
+
+            });
+
+            //åˆ é™¤äº‹ä»¶
+            document.getElementById("delCase").addEventListener("click", function () {
+
+                editor.newCase();
+                var timer = setTimeout(function () {
+                    new Code().delete(parseInt(local(config.storeKey)) || 0).then(function () {
+                        notice.success("åˆ é™¤æˆåŠŸ");
+                    }, function () {
+                        notice.error("åˆ é™¤å¤±è´¥");
+                    });
+                }, 1000);
+
+            });
+
+            //å¿«æ·é”®è®¾ç½®
+            new keyMap("#editors").keyBind(['alt', 's'], function () {
+                Code.save(editor).then(function () {
+                    notice.success("ä¿å­˜æˆåŠŸ");
+                }, function () {
+                    notice.error("ä¿å­˜å¤±è´¥");
+                });
+            });
+
+            new keyMap().keyBind(['alt', 'r'], function () {
+                Code.save(editor);
+                editors.play();
+                editors.styleToggle(false);
+            }).keyBind(['alt', 'z'], function () {
+                codeList.togglePanel();
+                codeList.showList();
+            });
+
+
+            require(['emmet']);
+
+
         });
 
-
-
-
-
-        require(['emmet']);
-
-
-    });
 
 });
 

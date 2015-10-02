@@ -88,6 +88,7 @@ define(function () {
         else if (e.altKey || e.ctrlKey || e.shiftKey) {
             for (; i < len - 1; i++)//最后一个为非功能键
             {
+                //前面几个为功能键
                 if (!e[keys[i].toLowerCase() + 'Key']) {
                     return false;
                 }

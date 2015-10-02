@@ -34,7 +34,6 @@ define(['entity', 'local', 'app/config', 'Util'], function (Entity, local, confi
 
     Code.prototype.get = function (id) {
         return Entity.get(STORE_NAME,id||this.entity.id||0).then(function(data){
-
             return new Promise(function(resolve, reject){
                 this.entity=data;
                 resolve(this.entity);

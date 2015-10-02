@@ -17,7 +17,7 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
     var STATUS_KEY = "isPlay";
 
 
-    window["CodeMirror"]=CodeMirror;//����emmet
+    window["CodeMirror"]=CodeMirror;//emmet 插件需要全局的变量
 
     function play(mustRun) {
         if (!mustRun && local(STATUS_KEY) === "true")return;
