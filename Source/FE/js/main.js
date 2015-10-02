@@ -18,8 +18,8 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
 
 
     //延迟加载
-    require(['app/Code', 'app/editor', 'local', 'app/config','app/codeList','app/keymapper'],
-        function (Code, editor, local,config,codeList,keyMap) {
+    require(['app/Code', 'app/editor', 'local', 'app/config','app/codeList','app/keymapper','app/notice'],
+        function (Code, editor, local,config,codeList,keyMap,notice) {
 
 
         //点击运行保存事件
@@ -48,9 +48,9 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
             editor.newCase();
             var timer= setTimeout(function(){
                 new Code().delete(parseInt(local(config.storeKey))||0).then(function(){
-                    console.log("success");
+                    notice.success("success");
                 },function(){
-                    console.log("failed");
+                    notice.error("failed");
                 });
             },1000);
 
@@ -58,7 +58,11 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
 
         //快捷键设置
         new keyMap("#editors").keyBind(['alt','s'],function(){
-            Code.save(editor);
+            Code.save(editor).then(function(){
+                notice.success("success");
+            },function(){
+                notice.error("failed");
+            });
         });
 
         new keyMap().keyBind(['alt','r'],function(){
@@ -74,7 +78,7 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
 
 
 
-        require(['emmet','xml-fold','matchtags']);
+        require(['emmet']);
 
 
     });

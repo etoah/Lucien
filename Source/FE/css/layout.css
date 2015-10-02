@@ -36,8 +36,7 @@
 
     position: relative;
     height: 100%;
-    width: 200px;
-
+    width: 230px;
     display: none;
     background-color:#cccccc;
     opacity:0.8;
@@ -62,10 +61,6 @@
     opacity:1;
 }
 
-.list-con
-{
-
-}
 
 #listGrip
 {
@@ -79,4 +74,66 @@
     background-color: #0055aa;
     color: #fff;
 
+}
+
+
+/*提示*/
+#notice
+{
+    height: 3em;
+    width: 100%;
+    position: fixed;
+    bottom: 10px;
+    z-index: 1001;
+    padding: 8px 35px 8px 14px;
+    margin-bottom: 20px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    font:normal normal  bolder 1em/3em Microsoft YaHei,"微软雅黑";
+    text-align: center;
+    opacity:0;
+}
+
+.notice-show
+{
+    -webkit-animation:show-notice 1.5s linear;
+    -o-animation:show-notice 1.5s linear;
+    animation:show-notice 1.5s linear;
+}
+
+
+@keyframes show-notice {
+    0%
+    {
+        opacity:1;
+    }
+    75%
+    {
+        opacity:1;
+    }
+    100% {
+        
+        opacity:0;
+    }
+}
+.confirm {
+  color: #3a87ad;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+.success {
+    color: #468847;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+.error {
+    color: #b94a48;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+}
+.warning
+{
+    color: #c09853;
+    background-color: #fcf8e3;
+    border-color:#fbeed5;
 }
