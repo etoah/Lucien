@@ -57,7 +57,7 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
             isReversal = local(STATUS_KEY) === "true";
 
         if (isInit ? !isReversal : isReversal) {
-            editorsStyle.display = "block";
+            editorsStyle.display = "flex";
             resultStyle.display = "none";
             playEle.className = "play";
             local(STATUS_KEY, false);
