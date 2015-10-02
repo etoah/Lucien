@@ -32,7 +32,7 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
 
             //列表展示事件
             document.getElementById("listGrip").addEventListener("click", function (event) {
-                codeList.togglePanel();
+                //codeList.togglePanel();
                 codeList.showList();
                 event.stopPropagation();
 
@@ -66,7 +66,6 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
                 editors.play();
                 editors.styleToggle(false);
             }).keyBind(['alt', 'z'], function () {
-                codeList.togglePanel();
                 codeList.showList();
             });
 

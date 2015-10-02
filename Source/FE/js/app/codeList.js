@@ -3,10 +3,10 @@
  */
 
 
-define(['app/Code', 'app/editor'], function (Code, editor) {
+define(['app/Code', 'app/editor',"local","app/config"], function (Code, editor,local,config) {
 
     var listPanel = document.getElementById("listPanel"),
-        LI_TEMPLETA = "<li data-id='{0}' title='{1}'>{1}</li>",
+        LI_TEMPLETA = "<li data-id='{0}' title='{1}' class='{2}'>{1}</li>",
         ul = document.getElementById("codeUL");
 
     function togglePanel() {
@@ -24,8 +24,11 @@ define(['app/Code', 'app/editor'], function (Code, editor) {
     function registerEvent() {
         listPanel.addEventListener("click", function (event) {
 
-            var src = event.srcElement || event.target;
+            var src = event.srcElement || event.target,
+             ele=this.querySelector("[class='list-active']");
             if (src.nodeName && src.nodeName === "LI") {
+                ele&&(ele.className="");
+                src.className="list-active";
                 id = parseInt(src.getAttribute("data-id")) || 0;
                 editor.init(id);
             }
@@ -40,21 +43,22 @@ define(['app/Code', 'app/editor'], function (Code, editor) {
     }
 
     function showList() {
+        togglePanel();//Todo:需优化 会引起reflow，repaint
         if (!listPanel.style.display)return;
-        new Code().getAll().then(function (data) {
+       return new Code().getAll().then(function (data) {
 
             var listr = "";
             data.forEach(function (item) {
-                listr += LI_TEMPLETA.format(item.id, item.title);
+                listr += LI_TEMPLETA.format(item.id, item.title,item.id==local(config.storeKey)?"list-active":"");
             });
 
             ul.innerHTML = listr;
             registerEvent();
+
         });
     }
 
     return {
-        'togglePanel': togglePanel,
         'showList': showList
     };
 

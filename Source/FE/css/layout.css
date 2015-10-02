@@ -61,6 +61,11 @@
     opacity:1;
 }
 
+.list-active
+{
+    font-weight: bold;
+    color: #008855;
+}
 
 #listGrip
 {
