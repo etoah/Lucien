@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="js/require.js"  defer async="true"  data-main="js/main"></script>
+    <script src="js/require.js" defer async="true" data-main="js/main"></script>
     <link rel="stylesheet" href="css/normalize.css"/>
     <link rel="stylesheet" href="css/codemirror.css"/>
     <link rel="stylesheet" href="css/layout.css"/>
@@ -14,7 +14,11 @@
 <body>
 
 <div class="wrap">
-    <nav class="nav"><span id="newCase">新</span><span id="delCase">删</span><span id="play" class="play"></span></nav>
+    <nav class="nav">
+        <span id="newCase">新</span>
+        <span id="delCase">删</span>
+        <span id="play" class="play"></span>
+    </nav>
     <aside id="listPanel">
 
         <ul class="code-list" id="codeUL">
@@ -30,20 +34,19 @@
 
         </div>
         <div class="col editor" style="width: 33%;">
-             <textarea id="javascript" name="code"></textarea>
+            <textarea id="javascript" name="code"></textarea>
 
         </div>
     </section>
     <section id="result" class="container editors">
 
-        <iframe id="resultframe"  frameborder="0"></iframe>
+        <iframe id="resultframe" frameborder="0"></iframe>
 
     </section>
     <span id="listGrip">...</span>
 
     <p id="notice">
     </p>
-
 
 
 </div>
