@@ -50,10 +50,12 @@
 .code-tag
 {
     position: absolute;
+
     top:-3px;
     right: 25px;
-    color: #ddd;
+    color: #806060;/*TODO:theme #ddd*/
     z-index: 1001;
+    font-size: 0.5em;
     font-family: Microsoft YaHei,"微软雅黑";
 }
 
