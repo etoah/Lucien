@@ -1,47 +1,15 @@
-.play,.stop {
-    height: 20px;
-    width: 20px;
-    display: block;
-    position: relative;
-    float: right;
-}
 
-.play:before {
-    content: '';
-    height: 0;
-    width: 0;
-    display: block;
-    border: 12px transparent solid;
-    border-right-width: 0;
-    border-left-color: #333;
-    position: absolute;
-    top: 4px;
-    left: 0px;
-}
-
-.stop:before {
-    content: '';
-    height: 12px;
-    width: 12px;
-    display: block;
-    background: #333;
-    position: absolute;
-    top: 9px;
-    left: -2px;
-}
-
-
-.nav>span
+.nav-action
 {
     background: #3bbec0;
     color: #fff;
     text-shadow: none;
-    padding: 2px 8px;
+    padding: 0 8px;
     border-radius: 2px;
     cursor: pointer;
 }
 
-.nav>span:hover
+.nav-action:hover
 {
     background: rgba(0,157,158,1);
     cursor: pointer;

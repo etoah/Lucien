@@ -8,14 +8,20 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
         js_e=document.getElementById("javascript");
     var htmlEditor = CodeMirror.fromTextArea(html_e, {
         mode: "text/html",
-        profile: 'xhtml'
+        profile: 'xhtml',
+        theme:'pastel-on-dark'
+        //theme:"xq-light"
     });
     var cssEditor = CodeMirror.fromTextArea(css_e, {
         mode: "css",
-        profile:"css"
+        profile:"css",
+        theme:'pastel-on-dark'
+        //theme:"xq-light"
     });
     var jsEditor = CodeMirror.fromTextArea(js_e, {
-        mode: "javascript"
+        mode: "javascript",
+        theme:'pastel-on-dark'
+       // theme:"xq-light"
     });
     var STATUS_KEY = "isPlay";
 
