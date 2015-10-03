@@ -82,6 +82,12 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
                 handerMap.play();
             }).keyBind(['alt', 'z'], function () {
                 handerMap.listGrip();
+            }).keyBind(['alt','h'],function(){
+                editor.toggle("html");
+            }).keyBind(['alt','c'],function(){
+                editor.toggle("css");
+            }).keyBind(['alt','j'],function(){
+                editor.toggle("js");
             });
 
 
