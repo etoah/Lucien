@@ -7,7 +7,8 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
     var html_template='<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><title>Demo</title><style>{1}</style></head><body>{0}<script>{2}</script></body></html>',
         html_e=document.getElementById("html"),
         css_e=document.getElementById("css"),
-        js_e=document.getElementById("javascript");
+        js_e=document.getElementById("javascript"),
+        STATUS_KEY = "isPlay";
     var htmlEditor = CodeMirror.fromTextArea(html_e, {
         mode: "text/html",
         profile: 'xhtml',
@@ -29,8 +30,7 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
 
        // theme:"xq-light"
     });
-    var STATUS_KEY = "isPlay";
-
+        
 
     window["CodeMirror"]=CodeMirror;//emmet 插件需要全局的变量
 
