@@ -90,7 +90,6 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
                 editor.toggle("js");
             });
 
-
             require(['emmet']);
 
 

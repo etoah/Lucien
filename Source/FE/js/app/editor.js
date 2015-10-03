@@ -28,6 +28,7 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
             css = this.css.getValue(),
             js = this.js.getValue(),
             resultDoc = window.frames[0].document;
+
         resultDoc.querySelector("body").innerHTML = html;
         appendStyle(resultDoc, css);
         appendScript(resultDoc, js);
