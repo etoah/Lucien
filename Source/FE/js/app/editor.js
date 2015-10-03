@@ -69,14 +69,14 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
         if (isInit ? !isReversal : isReversal) {
             editorsStyle.display = "flex";
             resultStyle.display = "none";
-            playEle.className = "play";
+            //playEle.className = "play";
             local(STATUS_KEY, false);
             return true;
         }
         else {
             editorsStyle.display = "none";
             resultStyle.display = "block";
-            playEle.className = "stop";
+           // playEle.className = "stop";
             local(STATUS_KEY, true);
             return false;
         }
