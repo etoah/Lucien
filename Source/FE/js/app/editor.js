@@ -56,7 +56,7 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
     function styleToggle(isInit) {
         var editorsStyle = document.getElementById('editors').style,
             resultStyle = document.getElementById('result').style,
-            playEle = document.getElementById('play'),
+            playEle = document.querySelector('[data-action="play"]'),
             isReversal = local(STATUS_KEY) === "true";
 
         if (isInit ? !isReversal : isReversal) {
