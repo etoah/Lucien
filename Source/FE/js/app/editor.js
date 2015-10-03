@@ -3,7 +3,8 @@
  */
 
 define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css', 'javascript'], function (CodeMirror, local,Code,config) {
-    var html_e=document.getElementById("html"),
+    var html_template='<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><title>Demo</title><style>{1}</style></head><body>{0}<script>{2}</script></body></html>',
+        html_e=document.getElementById("html"),
         css_e=document.getElementById("css"),
         js_e=document.getElementById("javascript");
     var htmlEditor = CodeMirror.fromTextArea(html_e, {
@@ -35,29 +36,9 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
             js = this.js.getValue(),
             resultDoc = window.frames[0].document;
 
-        resultDoc.querySelector("body").innerHTML = html;
-        appendStyle(resultDoc, css);
-        appendScript(resultDoc, js);
-    }
-
-    function appendStyle(doc, css) {
-        var style = doc.createElement('style'),
-            head = doc.getElementsByTagName('HEAD')[0],
-            i;
-        style.type = 'text/css';
-        style.innerHTML = css;
-        var children = head.childNodes;
-        for (i = 0; i < children.length; i++) {
-            head.removeChild(children[i]);
-        }
-        head.appendChild(style);
-    }
-
-    function appendScript(doc, js) {
-        var script = doc.createElement('script');
-        script.type = "text/javascript";
-        script.innerHTML = js;
-        doc.querySelector("body").appendChild(script);
+        resultDoc.open();
+        resultDoc.write(html_template.format(html,css,js));
+        resultDoc.close();
     }
 
     function styleToggle(isInit) {

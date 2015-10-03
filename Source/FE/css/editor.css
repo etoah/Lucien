@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .editors
 {
     position: absolute;
@@ -37,12 +38,12 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    font-family: Microsoft YaHei,"å¾®è½¯é›…é»‘";
+    font-family: Microsoft YaHei,"微软雅黑";
 }
 .CodeMirror
 {
     height: 100%;
-    font-family: Microsoft YaHei,"å¾®è½¯é›…é»‘";
+    font-family: Microsoft YaHei,"微软雅黑";
 
 }
 
@@ -53,7 +54,7 @@
     right: 25px;
     color: #ddd;
     z-index: 1001;
-    font-family: Microsoft YaHei,"å¾®è½¯é›…é»‘";
+    font-family: Microsoft YaHei,"微软雅黑";
 }
 
 iframe
