@@ -92,6 +92,10 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
 
             require(['emmet']);
 
+            window.onbeforeunload = function(){
+                    return "如果没有保存，您将丢失更改，您确认关闭吗?";
+            };
+
 
         });
 
