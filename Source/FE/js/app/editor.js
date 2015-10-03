@@ -11,6 +11,7 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
         mode: "text/html",
         profile: 'xhtml',
         theme:'pastel-on-dark'
+
         //theme:"xq-light"
     });
     var cssEditor = CodeMirror.fromTextArea(css_e, {

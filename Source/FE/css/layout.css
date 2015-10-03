@@ -40,10 +40,11 @@
     height: 100%;
     width: 230px;
     display: none;
-    background-color:#cccccc;
-    opacity:0.8;
+    background-color:#71C6F3;
+    color: #fff;
     z-index: 99;
     overflow: auto;
+    font-family: Microsoft YaHei,"å¾®è½¯é›…é»‘";
 
 }
 
@@ -57,7 +58,6 @@
 .code-list>li
 {
     cursor: pointer;
-    color: #0055aa;
     line-height: 1.5em;
     overflow: hidden;
     opacity:1;
@@ -78,7 +78,7 @@
     bottom: 10px;
     z-index: 100;
     cursor: pointer;
-    background-color: #3bbec0;
+    background-color:#71C6F3;
     color: #fff;
 
 }
