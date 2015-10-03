@@ -71,8 +71,6 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
             })
 
 
-
-
             //快捷键设置
             new keyMap("#editors").keyBind(['alt', 's'], function () {
                 handerMap.save();
@@ -90,7 +88,7 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
                 editor.toggle("js");
             });
 
-            require(['emmet']);
+            require(['emmet','show-hint','javascript-hint','anyword-hint']);
 
             window.onbeforeunload = function(){
                     return "如果没有保存，您将丢失更改，您确认关闭吗?";

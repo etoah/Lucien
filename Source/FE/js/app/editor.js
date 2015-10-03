@@ -2,7 +2,8 @@
  * Created by Lucien on 9/20/2015.
  */
 
-define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css', 'javascript'], function (CodeMirror, local,Code,config) {
+define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css', 'javascript'],
+    function (CodeMirror, local,Code,config) {
     var html_template='<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><title>Demo</title><style>{1}</style></head><body>{0}<script>{2}</script></body></html>',
         html_e=document.getElementById("html"),
         css_e=document.getElementById("css"),
@@ -17,12 +18,15 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
     var cssEditor = CodeMirror.fromTextArea(css_e, {
         mode: "css",
         profile:"css",
-        theme:'pastel-on-dark'
+        theme:'pastel-on-dark',
+        extraKeys: {"Tab": "autocomplete"}
         //theme:"xq-light"
     });
     var jsEditor = CodeMirror.fromTextArea(js_e, {
-        mode: "javascript",
-        theme:'pastel-on-dark'
+        mode: {name: "javascript", globalVars: true},
+        theme:'pastel-on-dark',
+        extraKeys: {"Tab": "autocomplete"}
+
        // theme:"xq-light"
     });
     var STATUS_KEY = "isPlay";
