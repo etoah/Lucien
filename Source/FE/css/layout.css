@@ -11,7 +11,7 @@
     line-height: 30px;
     width: 100%;
     background: #2c2827;/*TODO:theme*/
-    font-family: Microsoft YaHei, "微软雅黑";
+    font-family: Microsoft YaHei, "å¾®è½¯é›…é»‘";
 
 
 }
@@ -84,7 +84,7 @@
 }
 
 
-/*提示*/
+/*æç¤º*/
 #notice
 {
     height: 3em;
@@ -95,7 +95,7 @@
     padding: 8px 35px 8px 14px;
     margin-bottom: 20px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    font:normal normal  bolder 1em/3em Microsoft YaHei,"微软雅黑";
+    font:normal normal  bolder 1em/3em Microsoft YaHei,"å¾®è½¯é›…é»‘";
     text-align: center;
     opacity:0;
 }
