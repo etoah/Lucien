@@ -3,15 +3,18 @@
  */
 
 define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css', 'javascript'], function (CodeMirror, local,Code,config) {
-    var htmlEditor = CodeMirror.fromTextArea(document.getElementById("html"), {
+    var html_e=document.getElementById("html"),
+        css_e=document.getElementById("css"),
+        js_e=document.getElementById("javascript");
+    var htmlEditor = CodeMirror.fromTextArea(html_e, {
         mode: "text/html",
         profile: 'xhtml'
     });
-    var cssEditor = CodeMirror.fromTextArea(document.getElementById("css"), {
+    var cssEditor = CodeMirror.fromTextArea(css_e, {
         mode: "css",
         profile:"css"
     });
-    var jsEditor = CodeMirror.fromTextArea(document.getElementById("javascript"), {
+    var jsEditor = CodeMirror.fromTextArea(js_e, {
         mode: "javascript"
     });
     var STATUS_KEY = "isPlay";
@@ -97,6 +100,32 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
     }
 
 
+    function toggle(type)
+    {
+        var element;
+        if(type==="html")
+        {
+            element=html_e;
+        }
+        else if(type==="css"){
+            element=css_e;
+        }
+        else{
+            element=js_e;
+        }
+        if(element.parentNode.style.display!="none")
+        {
+            element.parentNode.style.display="none";
+
+
+        }
+        else{
+
+            element.parentNode.style.display="block";
+        }
+
+    }
+
     return {
         html: htmlEditor,
         css: cssEditor,
@@ -104,6 +133,7 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
         'play': play,
         'styleToggle': styleToggle,
         'init': init,
+        'toggle':toggle,
         newCase:function(isClearKey){
             !isClearKey||local(config.storeKey, 'null');
             this.html.setValue("");

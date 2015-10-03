@@ -32,7 +32,23 @@
 
 #newCase,#delCase
 {
-    font-family: Microsoft YaHei, "Î¢ÈíÑÅºÚ";
+
     margin: 0 10px;
+    cursor: pointer;
+}
+
+.nav>span
+{
+    background: #3bbec0;
+    color: #fff;
+    text-shadow: none;
+    padding: 2px 8px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.nav>span:hover
+{
+    background: rgba(0,157,158,1);
     cursor: pointer;
 }

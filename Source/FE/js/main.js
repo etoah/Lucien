@@ -17,7 +17,23 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
     require(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/keymapper', 'app/notice'],
         function (Code, editor, local, config, codeList, keyMap, notice) {
 
+            var handerMap={
+                play:function(){
+                    Code.save(editor);
+                    editors.play();
+                    editors.styleToggle(false);
+                },
+                newCase:function(){
+                    editor.newCase(true);
+                },
+                toggle:function(event,src)
+                {
+                    editor.toggle(src.getAttribute("data-target"));
+                }
+            }
 
+
+            //ToDo:事件绑定优化
             //点击运行保存事件
             document.getElementById("play").addEventListener("click", function () {
                 Code.save(editor);
@@ -32,7 +48,6 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
 
             //列表展示事件
             document.getElementById("listGrip").addEventListener("click", function (event) {
-                //codeList.togglePanel();
                 codeList.showList();
                 event.stopPropagation();
 
@@ -51,6 +66,17 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
                 }, 1000);
 
             });
+
+            document.getElementById("nav_js").addEventListener("click",function(event){
+
+                var src = event.srcElement || event.target,
+                    action=src.getAttribute("data-action");
+                if(!action)return;
+
+                handerMap[action](event,src);
+            })
+
+
 
             //快捷键设置
             new keyMap("#editors").keyBind(['alt', 's'], function () {
