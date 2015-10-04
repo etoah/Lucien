@@ -99,6 +99,7 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
     {
         CodeMirror.commands["selectAll"](editor);
         editor.autoFormatRange(editor.getCursor(true),editor.getCursor(false));
+        return this;
     }
     function toggle(type)
     {

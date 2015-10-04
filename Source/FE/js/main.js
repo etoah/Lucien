@@ -98,6 +98,10 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
                 editor.toggle("css");
             }).keyBind(['alt','j'],function(){
                 editor.toggle("js");
+            }).keyBind(['ctrl','alt','f'],function(){
+                editor.format(editor.html)
+                    .format(editor.css)
+                    .format(editor.js);
             });
 
             require(['emmet','show-hint','javascript-hint','anyword-hint','formatting']);
