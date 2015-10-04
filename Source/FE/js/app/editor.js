@@ -21,10 +21,10 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
     });
     var cssEditor = CodeMirror.fromTextArea(css_e, {
         mode: "css",
-        profile:"css",
+        //profile:"css",
         theme:'pastel-on-dark',
-        autoCloseBrackets: true
-       // extraKeys: {"Tab": "autocomplete"}
+        autoCloseBrackets: true,
+        extraKeys: {"Tab": "autocomplete"}
         //theme:"xq-light"
     });
     var jsEditor = CodeMirror.fromTextArea(js_e, {

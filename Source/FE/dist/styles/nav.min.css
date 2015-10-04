@@ -1,1 +1,0 @@
-.play,.stop{height:20px;width:20px;display:block;position:relative;float:right}.play:before,.stop:before{content:'';display:block;position:absolute}.play:before{height:0;width:0;border:12px solid transparent;border-right-width:0;border-left-color:#333;top:4px;left:0}.stop:before{height:12px;width:12px;background:#333;top:9px;left:-2px}

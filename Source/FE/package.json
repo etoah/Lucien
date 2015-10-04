@@ -1,5 +1,8 @@
 {
   "name": "WebEditor",
-  "version": "0.0.1"
-
+  "version": "0.0.1",
+  "devDependencies": {
+    "amd-optimize": "^0.6.0",
+    "gulp-requirejs": "^0.1.3"
+  }
 }

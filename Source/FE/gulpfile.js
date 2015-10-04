@@ -1,5 +1,5 @@
-// 载入外挂
 var gulp = require('gulp'),
+    htmlmin = require('gulp-htmlmin'), //html压缩
     minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
@@ -8,59 +8,74 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
+    amdOptimize = require('amd-optimize'),
     livereload = require('gulp-livereload');
 
+
+gulp.task('html', function () {
+    return gulp.src('index.html')
+        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(gulp.dest('./dist'))
+        .pipe(notify({message: 'html task ok'}));
+
+});
+
 // 样式
-gulp.task('styles', function() {
-    return gulp.src('css/*.css')
-       // .pipe(concat('index.css'))
-        .pipe(gulp.dest('dist/styles'))
-        .pipe(rename({ suffix: '.min' }))
+gulp.task('css', function () {
+    return gulp.src(['css/normalize.css', 'css/codemirror.css', 'css/show-hint.css', 'css/layout.css', 'css/editor.css', 'css/nav.css'])
+        .pipe(concat('editor.css'))
+        .pipe(gulp.dest('dist/css'))
+        .pipe(rename({suffix: '.min'}))
         .pipe(minifycss())
         .pipe(gulp.dest('dist/styles'))
-        .pipe(notify({ message: 'Styles task complete' }));
+        .pipe(notify({message: 'Styles task complete'}));
 });
 
 // 脚本
-gulp.task('scripts', function() {
-    return gulp.src('js/*.js')
-       // .pipe(jshint('.jshintrc'))
-       // .pipe(jshint.reporter('default'))
-       // .pipe(concat('index.js'))
-        .pipe(gulp.dest('dist/scripts'))
-        .pipe(rename({ suffix: '.min' }))
+gulp.task('js', function () {
+    return gulp.src(['js/*.js', 'js/**/*.js'])
+        .pipe(amdOptimize("../main", {
+            baseUrl: 'js/lib',
+
+            paths: {
+                app: '../app'
+            }
+        }))   //主入口文件
+        .pipe(concat('editor.js'))
+        .pipe(gulp.dest('dist/js'))
+        .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
-        .pipe(gulp.dest('dist/scripts'))
-        .pipe(notify({ message: 'Scripts task complete' }));
+        .pipe(gulp.dest('dist/js'))
+        .pipe(notify({message: 'Scripts task complete'}));
 });
 
 
 // 清理
-gulp.task('clean', function() {
-    return gulp.src(['dist/styles', 'dist/scripts'], {read: false})
+gulp.task('clean', function () {
+    return gulp.src(['dist'], {read: false})
         .pipe(clean());
 });
 
 // 预设任务
-gulp.task('default', ['clean'], function() {
-    gulp.start('styles', 'scripts');
+gulp.task('default', ['clean'], function () {
+    gulp.start('html', 'css', 'js');
 });
 
 // 看手
-gulp.task('watch', function() {
+gulp.task('watch', function () {
 
-    // 看守所有.scss档
-    gulp.watch('css/*.css', ['styles']);
+    // 看守所有.css档
+    gulp.watch('css/*.css', ['css']);
 
     // 看守所有.js档
-    gulp.watch('js/*.js', ['scripts']);
+    gulp.watch('js/*.js', ['js']);
 
 
     // 建立即时重整伺服器
     var server = livereload();
 
     // 看守所有位在 dist/  目录下的档案，一旦有更动，便进行重整
-    gulp.watch(['dist/**']).on('change', function(file) {
+    gulp.watch(['dist/**']).on('change', function (file) {
         server.changed(file.path);
     });
 
