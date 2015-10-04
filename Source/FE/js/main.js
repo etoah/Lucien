@@ -37,14 +37,10 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
                 },
                 delCase:function()
                 {
-                    editor.newCase();
-                    var timer = setTimeout(function () {
-                        new Code().delete(parseInt(local(config.storeKey)) || 0).then(function () {
-                            notice.success("删除成功");
-                        }, function () {
-                            notice.error("删除失败");
-                        });
-                    }, 1000);
+                    notice.confirm(function () {
+                        editor.newCase();
+                        new Code().delete(parseInt(local(config.storeKey)) || 0);
+                    },"删除成功",3000);
                 },
                 save:function(){
                     Code.save(editor).then(function () {
