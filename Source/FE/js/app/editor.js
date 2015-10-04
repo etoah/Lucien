@@ -14,6 +14,7 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
         profile: 'xhtml',
         theme:'pastel-on-dark',
         autoCloseTags: true,
+        matchTags: {bothTags: true},
         extraKeys: {"Ctrl-J": "toMatchingTag"}
 
         //theme:"xq-light"
@@ -22,8 +23,8 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
         mode: "css",
         profile:"css",
         theme:'pastel-on-dark',
-        autoCloseBrackets: true,
-        extraKeys: {"Tab": "autocomplete"}
+        autoCloseBrackets: true
+       // extraKeys: {"Tab": "autocomplete"}
         //theme:"xq-light"
     });
     var jsEditor = CodeMirror.fromTextArea(js_e, {

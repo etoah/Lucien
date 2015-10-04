@@ -104,7 +104,7 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
                     .format(editor.js);
             });
 
-            require(['emmet','show-hint','javascript-hint','anyword-hint','formatting']);
+            require(['emmet','show-hint','javascript-hint','anyword-hint','formatting','matchtags']);
 
             window.onbeforeunload = function(){
                     return "如果没有保存，您将丢失更改，您确认关闭吗?";
