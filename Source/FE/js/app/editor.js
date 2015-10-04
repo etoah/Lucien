@@ -2,7 +2,7 @@
  * Created by Lucien on 9/20/2015.
  */
 
-define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css', 'javascript'],
+define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css', 'javascript','closebrackets','closetag'],
     function (CodeMirror, local,Code,config) {
     var html_template='<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><title>Demo</title><style>{1}</style></head><body>{0}<script>{2}</script></body></html>',
         html_e=document.getElementById("html"),
@@ -13,6 +13,7 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
         mode: "text/html",
         profile: 'xhtml',
         theme:'pastel-on-dark',
+        autoCloseTags: true,
         extraKeys: {"Ctrl-J": "toMatchingTag"}
 
         //theme:"xq-light"
@@ -21,12 +22,14 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
         mode: "css",
         profile:"css",
         theme:'pastel-on-dark',
+        autoCloseBrackets: true,
         extraKeys: {"Tab": "autocomplete"}
         //theme:"xq-light"
     });
     var jsEditor = CodeMirror.fromTextArea(js_e, {
         mode: {name: "javascript", globalVars: true},
         theme:'pastel-on-dark',
+        autoCloseBrackets: true,
         extraKeys: {"Tab": "autocomplete"}
         // theme:"xq-light"
     });
