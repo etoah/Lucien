@@ -12,7 +12,8 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
     var htmlEditor = CodeMirror.fromTextArea(html_e, {
         mode: "text/html",
         profile: 'xhtml',
-        theme:'pastel-on-dark'
+        theme:'pastel-on-dark',
+        extraKeys: {"Ctrl-J": "toMatchingTag"}
 
         //theme:"xq-light"
     });
@@ -27,10 +28,9 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
         mode: {name: "javascript", globalVars: true},
         theme:'pastel-on-dark',
         extraKeys: {"Tab": "autocomplete"}
-
-       // theme:"xq-light"
+        // theme:"xq-light"
     });
-        
+
 
     window["CodeMirror"]=CodeMirror;//emmet 插件需要全局的变量
 
