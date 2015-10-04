@@ -95,7 +95,11 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
         }
     }
 
-
+    function format(editor)
+    {
+        CodeMirror.commands["selectAll"](editor);
+        editor.autoFormatRange(editor.getCursor(true),editor.getCursor(false));
+    }
     function toggle(type)
     {
         var element;
@@ -130,6 +134,7 @@ define(['codemirror', 'local','app/Code','app/config', 'htmlmixed', 'xml', 'css'
         'styleToggle': styleToggle,
         'init': init,
         'toggle':toggle,
+        'format':format,
         newCase:function(isClearKey){
             !isClearKey||local(config.storeKey, 'null');
             this.html.setValue("");

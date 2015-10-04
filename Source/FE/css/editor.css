@@ -57,6 +57,7 @@
     z-index: 1001;
     font-size: 0.5em;
     font-family: Microsoft YaHei,"微软雅黑";
+    cursor: pointer;
 }
 
 iframe

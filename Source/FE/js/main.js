@@ -52,11 +52,23 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
                     }, function () {
                         notice.error("保存失败");
                     });
+                },
+                format:function(event,src)
+                {
+                    editor.format(editor[src.getAttribute("data-editor")]);
                 }
             }
 
 
             document.getElementById("nav_js").addEventListener("click",function(event){
+
+                var src = event.srcElement || event.target,
+                    action=src.getAttribute("data-action");
+                if(!action)return;
+
+                handerMap[action](event,src);
+            })
+            document.getElementById("editors").addEventListener("click",function(event){
 
                 var src = event.srcElement || event.target,
                     action=src.getAttribute("data-action");
@@ -88,7 +100,7 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
                 editor.toggle("js");
             });
 
-            require(['emmet','show-hint','javascript-hint','anyword-hint','']);
+            require(['emmet','show-hint','javascript-hint','anyword-hint','formatting']);
 
             window.onbeforeunload = function(){
                     return "如果没有保存，您将丢失更改，您确认关闭吗?";
