@@ -123,6 +123,7 @@ define(function () {
                     keyup(e);
                     e.stopPropagation();
                     e.preventDefault();
+                    e.returnValue = false;
                     return false;
                 }
             });
@@ -133,6 +134,7 @@ define(function () {
                     keydown(e);
                     e.stopPropagation();
                     e.preventDefault();
+                    e.returnValue = false;
                     return false;
                 }
             });

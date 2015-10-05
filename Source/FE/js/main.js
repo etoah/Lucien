@@ -14,8 +14,8 @@ requirejs.config({
 require(['app/editor', 'require', 'domready!'], function (editors) {
     editors.init();
 //延迟加载
-    require(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/keymapper', 'app/notice'],
-        function (Code, editor, local, config, codeList, keyMap, notice) {
+    require(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/keymapper', 'app/notice','Util'],
+        function (Code, editor, local, config, codeList, keyMap, notice,util) {
 
             var handerMap={
                 play:function(){
@@ -52,6 +52,10 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
                 format:function(event,src)
                 {
                     editor.format(editor[src.getAttribute("data-editor")]);
+                },
+                export:function()
+                {
+                    util.export("export.html",editor.getCode());
                 }
             }
 
@@ -102,9 +106,9 @@ require(['app/editor', 'require', 'domready!'], function (editors) {
 
             require(['emmet','show-hint','javascript-hint','anyword-hint','formatting','matchtags']);
 
-            window.onbeforeunload = function(){
-                    return "如果没有保存，您将丢失更改，您确认关闭吗?";
-            };
+            //window.onbeforeunload = function(){
+            //        return "如果没有保存，您将丢失更改，您确认关闭吗?";
+            //};
 
 
         });
