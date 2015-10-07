@@ -11,7 +11,7 @@
     line-height: 30px;
     width: 100%;
     background: #2c2827;/*TODO:theme*/
-    font-family: Microsoft YaHei, "å¾®è½¯é›…é»‘";
+    font-family: Microsoft YaHei, "ÃƒÂ¥Ã‚Â¾Ã‚Â®ÃƒÂ¨Ã‚Â½Ã‚Â¯ÃƒÂ©Ã¢â‚¬ÂºÃ¢â‚¬Â¦ÃƒÂ©Ã‚Â»Ã¢â‚¬Ëœ";
 
 
 }
@@ -44,7 +44,7 @@
     color: #fff;
     z-index: 99;
     overflow: auto;
-    font-family: Microsoft YaHei,"å¾®è½¯é›…é»‘";
+    font-family: Microsoft YaHei,"ÃƒÂ¥Ã‚Â¾Ã‚Â®ÃƒÂ¨Ã‚Â½Ã‚Â¯ÃƒÂ©Ã¢â‚¬ÂºÃ¢â‚¬Â¦ÃƒÂ©Ã‚Â»Ã¢â‚¬Ëœ";
 
 }
 
@@ -78,9 +78,10 @@
     bottom: 10px;
     z-index: 100;
     cursor: pointer;
-    background-color:#71C6F3;
+    background-color: rgba(113, 198, 243, 0.18);
     color: #fff;
 
+    font-size: 20px;
 }
 
 
@@ -93,7 +94,7 @@
     z-index: 1001;
     padding: 8px 35px 8px 14px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    font:normal normal  bolder 1em/2em Microsoft YaHei,"微软雅黑";
+    font:normal normal  bolder 1em/2em Microsoft YaHei,"Ã¥Â¾Â®Ã¨Â½Â¯Ã©â€ºâ€¦Ã©Â»â€˜";
     text-align: center;
     opacity:0;
 }
@@ -156,4 +157,13 @@
     cursor: pointer;
     margin-left: 10px;
 
+}
+
+.left
+{
+    float: left;
+}
+.right
+{
+    float: right;
 }

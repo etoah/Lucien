@@ -11,20 +11,24 @@
     <link rel="stylesheet" href="css/layout.css"/>
     <link rel="stylesheet" href="css/editor.css"/>
     <link rel="stylesheet" href="css/nav.css"/>
+    <link rel="stylesheet" href="css/icons.css"/>
 
 </head>
 <body>
 
 <div class="wrap">
     <nav class="nav" id="nav_js">
-        <span data-action="newCase" class="nav-action">New</span>
-        <span data-action="delCase" class="nav-action">Del</span>
-        <span data-action="toggle" data-target="html" class="nav-action">Html</span>
-        <span data-action="toggle" data-target="css" class="nav-action">Css</span>
-        <span data-action="toggle" data-target="js" class="nav-action">Js</span>
-        <span data-action="save" class="nav-action">Save</span>
-        <span data-action="export" class="nav-action">Down</span>
-        <span data-action="play" class="nav-action">Run</span>
+        <ul class="nav-action">
+            <li><span  data-action="newCase" class="icon icon-new"></span></li>
+            <li><span  data-action="save" class="icon icon-save"></span></li>
+            <li><span  data-action="play" class="icon icon-play"></span></li>
+
+            <li><span  data-action="toggle"  data-target="html"  class="icon">HTML</span></li>
+            <li><span  data-action="toggle" data-target="css" class="icon">CSS</span></li>
+            <li><span  data-action="toggle" data-target="js" class="icon">Javascript</span></li>
+            <li><span  data-action="delCase" class="icon icon-del"></span></li>
+            <li><span  data-action="export" class="icon icon-down"></span></li>
+        </ul>
     </nav>
     <aside id="listPanel">
 
@@ -53,7 +57,7 @@
         <iframe id="resultframe" frameborder="0"></iframe>
 
     </section>
-    <span id="listGrip">...</span>
+    <div id="listGrip"><span  class="icon icon-list"></span></div>
 
     <p id="notice" style="display: none;">
     </p>

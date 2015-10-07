@@ -1,16 +1,17 @@
 
 .nav-action
 {
-    background: #3bbec0;
-    color: #fff;
-    text-shadow: none;
-    padding: 0 8px;
-    border-radius: 2px;
+    height: 30px;
+    margin: 0;
+}
+.nav-action>li
+{
+    display: inline;
+    color: #E7E5E4;
     cursor: pointer;
+    font-size: 20px;
+    line-height: 30px;
+    padding:0 5px;
 }
 
-.nav-action:hover
-{
-    background: rgba(0,157,158,1);
-    cursor: pointer;
-}
+
