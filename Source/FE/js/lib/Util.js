@@ -4,7 +4,7 @@
 
 
 
-define(function(){
+define(['rsvp'],function(rsvp){
 
     Date.prototype.format = function(fmt)
     {
@@ -109,6 +109,10 @@ define(function(){
         fakeClick(save_link);
     }
 
+    if(!window.Promise)
+    {
+        window.Promise=rsvp.Promise;
+    }
 
 
     return {
