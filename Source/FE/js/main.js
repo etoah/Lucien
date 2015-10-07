@@ -13,7 +13,8 @@ requirejs.config({
 
 require(['app/editor', 'require', 'domready!'], function (editors) {
     editors.init();
-//延迟加载
+
+    //延迟加载
     require(['app/eventBinder'],
         function () {
 

@@ -19,15 +19,14 @@
 <div class="wrap">
     <nav class="nav" id="nav_js">
         <ul class="nav-action">
-            <li><span  data-action="newCase" class="icon icon-new"></span></li>
-            <li><span  data-action="save" class="icon icon-save"></span></li>
-            <li><span  data-action="play" class="icon icon-play"></span></li>
-
-            <li><span  data-action="toggle"  data-action-argu="html"  class="icon">HTML</span></li>
-            <li><span  data-action="toggle" data-action-argu="css" class="icon">CSS</span></li>
-            <li><span  data-action="toggle" data-action-argu="js" class="icon">Javascript</span></li>
-            <li><span  data-action="delCase" class="icon icon-del"></span></li>
-            <li><span  data-action="export" class="icon icon-down"></span></li>
+            <li><span  data-action="newCase" data-action-keymap="alt+n" class="icon icon-new"></span></li>
+            <li><span  data-action="save" data-action-keymap="alt+s" class="icon icon-save"></span></li>
+            <li><span  data-action="play" data-action-keymap="alt+r" class="icon icon-play"></span></li>
+            <li><span  data-action="toggle" data-action-keymap="ctrl+alt+h"  data-action-argu="html"  class="icon">HTML</span></li>
+            <li><span  data-action="toggle" data-action-keymap="ctrl+alt+c" data-action-argu="css" class="icon">CSS</span></li>
+            <li><span  data-action="toggle" data-action-keymap="ctrl+alt+j" data-action-argu="js" class="icon">Javascript</span></li>
+            <li><span  data-action="delCase" data-action-keymap="ctrl+alt+d" class="icon icon-del"></span></li>
+            <li><span  data-action="export"  class="icon icon-down"></span></li>
         </ul>
     </nav>
     <aside id="listPanel">
@@ -57,7 +56,7 @@
         <iframe id="resultframe" frameborder="0"></iframe>
 
     </section>
-    <div id="listGrip"><span data-action="listGrip"  class="icon icon-list"></span></div>
+    <div id="listGrip"><span data-action="listGrip" data-action-keymap="alt+l"  class="icon icon-list"></span></div>
 
     <p id="notice" style="display: none;">
     </p>

@@ -3,8 +3,8 @@
  */
 
 
-require(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/keymapper', 'app/notice', 'Util', 'app/eventBinder'],
-    function (Code, editor, local, config, codeList, keyMap, notice, util, eventBinder) {
+require(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/keymapper', 'app/notice', 'Util'],
+    function (Code, editor, local, config, codeList, keyMap, notice, util) {
 
 
         var handlerMap = {
@@ -48,39 +48,36 @@ require(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/k
         function binder() {
             var nodeList = document.querySelectorAll('[data-action]'),
                 len = nodeList.length,
-                i = -1;
+                i = -1,
+                action = null,
+                argu = null,
+                keys = null,
+                keyM = new keyMap();
             while (++i < len) {
-                nodeList[i].addEventListener("click", function (event) {
+                action = nodeList[i].getAttribute("data-action");
+                argu = nodeList[i].getAttribute("data-action-argu");
+                if (!action)continue;
+                (function (action, argu) {
+                    nodeList[i].addEventListener("click", function (event) {
+                        event.srcElement = event.srcElement || event.target;
+                        handlerMap[action](event, argu);
+                    });
+                    keys = nodeList[i].getAttribute("data-action-keymap");
+                    if (keys) {
+                        keyM.keyBind(keys.split('+'), function (e) {
+                            handlerMap[action](e, argu);
+                        });
+                    }
+                })(action, argu);
 
-                    event.srcElement = event.srcElement || event.target;
-                    var action = event.srcElement.getAttribute("data-action"),
-                        argu = event.srcElement.getAttribute("data-action-argu");
-                    if (!action)return;
-
-                    handlerMap[action](event, argu);
-                })
             }
         }
 
         binder();
 
-        new keyMap().keyBind(['alt', 's'], function () {
-            handlerMap.save();
-        }).keyBind(['alt', 'r'], function () {
-            handlerMap.play();
-        }).keyBind(['alt', 'z'], function () {
+        new keyMap().keyBind(['alt', 'z'], function () {
             handlerMap.listGrip();
-        }).keyBind(['alt', 'h'], function () {
-            editor.toggle("html");
-        }).keyBind(['alt', 'c'], function () {
-            editor.toggle("css");
-        }).keyBind(['alt', 'j'], function () {
-            editor.toggle("js");
-        }).keyBind(['ctrl', 'alt', 'f'], function () {
-            editor.format(editor.html)
-                .format(editor.css)
-                .format(editor.js);
-        });
+        });//=alt+l方便单手操作
 
 
     });
