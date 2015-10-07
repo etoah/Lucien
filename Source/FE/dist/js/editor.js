@@ -13637,33 +13637,33 @@ require([
             var src = event.srcElement || event.target, action = src.getAttribute('data-action');
             if (!action)
                 return;
-            handerMap[action](event, src);
+            handlerMap[action](event, src);
         });
         document.getElementById('editors').addEventListener('click', function (event) {
             var src = event.srcElement || event.target, action = src.getAttribute('data-action');
             if (!action)
                 return;
-            handerMap[action](event, src);
+            handlerMap[action](event, src);
         });
         document.getElementById('listGrip').addEventListener('click', function (event) {
-            handerMap['listGrip']();
+            handlerMap['listGrip']();
         });
         new keyMap('#editors').keyBind([
             'alt',
             's'
         ], function () {
-            handerMap.save();
+            handlerMap.save();
         });
         new keyMap().keyBind([
             'alt',
             'r'
         ], function () {
-            handerMap.play();
+            handlerMap.play();
         }).keyBind([
             'alt',
             'z'
         ], function () {
-            handerMap.listGrip();
+            handlerMap.listGrip();
         }).keyBind([
             'alt',
             'h'

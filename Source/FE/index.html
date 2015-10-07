@@ -23,9 +23,9 @@
             <li><span  data-action="save" class="icon icon-save"></span></li>
             <li><span  data-action="play" class="icon icon-play"></span></li>
 
-            <li><span  data-action="toggle"  data-target="html"  class="icon">HTML</span></li>
-            <li><span  data-action="toggle" data-target="css" class="icon">CSS</span></li>
-            <li><span  data-action="toggle" data-target="js" class="icon">Javascript</span></li>
+            <li><span  data-action="toggle"  data-action-argu="html"  class="icon">HTML</span></li>
+            <li><span  data-action="toggle" data-action-argu="css" class="icon">CSS</span></li>
+            <li><span  data-action="toggle" data-action-argu="js" class="icon">Javascript</span></li>
             <li><span  data-action="delCase" class="icon icon-del"></span></li>
             <li><span  data-action="export" class="icon icon-down"></span></li>
         </ul>
@@ -38,16 +38,16 @@
     </aside>
     <section id="editors" class="container editors">
         <div class="editor">
-            <span class="code-tag" data-action="format" data-editor="html">html</span>
+            <span class="code-tag" data-action="format" data-action-argu="html">html</span>
             <textarea id="html" name="code"></textarea>
         </div>
         <div class="editor">
-            <span class="code-tag" data-action="format" data-editor="css">css</span>
+            <span class="code-tag" data-action="format" data-action-argu="css">css</span>
             <textarea id="css" name="code"></textarea>
 
         </div>
         <div class="editor">
-            <span class="code-tag" data-action="format" data-editor="js">javascript</span>
+            <span class="code-tag" data-action="format" data-action-argu="js">javascript</span>
             <textarea id="javascript" name="code"></textarea>
 
         </div>
@@ -57,7 +57,7 @@
         <iframe id="resultframe" frameborder="0"></iframe>
 
     </section>
-    <div id="listGrip"><span  class="icon icon-list"></span></div>
+    <div id="listGrip"><span data-action="listGrip"  class="icon icon-list"></span></div>
 
     <p id="notice" style="display: none;">
     </p>

@@ -53,7 +53,7 @@ define(['app/Code', 'app/editor',"local","app/config"], function (Code, editor,l
             });
 
             ul.innerHTML = listr;
-            registerEvent();
+            registerEvent();//Todo:事件只需注册一次
 
         });
     }
