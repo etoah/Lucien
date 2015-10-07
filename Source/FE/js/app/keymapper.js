@@ -76,8 +76,10 @@ define(function () {
         backslash: 220,
         'right bracket': 221
     };
+    var commandKey=['alt','shift','ctrl'];
 
     function shouldTrigger(e, keys) {
+        if(!((e.altKey || e.ctrlKey || e.shiftKey)))return false;
         var len = keys.length,
             i = 0;
         if (typeof keys == 'string' || len == 1) {
@@ -94,11 +96,8 @@ define(function () {
                 }
             }
             return e.which == keyCodeMap[keys[len - 1]];
+        }
 
-        }
-        else {
-            return false;
-        }
     }
 
 

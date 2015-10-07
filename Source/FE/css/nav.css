@@ -8,11 +8,17 @@
 .nav-action>li
 {
     display: inline;
-    color: #E7E5E4;
+    color: #7B7A7A;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 30px;
     padding:0 5px;
+}
+.nav-action>li:hover
+{
+    color: #fff;
+    font-size: 22px;
+
 }
 
 
