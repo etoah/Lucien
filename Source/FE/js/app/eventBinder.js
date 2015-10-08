@@ -12,12 +12,16 @@ require(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/k
                 Code.save(editor);
                 editor.play();
                 editor.styleToggle(false);
+                var triggerElement=event.type==="click"?event.srcElement:document.querySelector('[data-action="play"]');
+                switchTrigger(triggerElement);
             },
             newCase: function () {
                 editor.newCase(true);
             },
             toggle: function (event, argu) {
-                editor.toggle(argu);
+                editor.toggle(argu,event.srcElement);
+                var triggerElement=event.type==="click"?event.srcElement:document.querySelector('[data-action="toggle"][data-argu="'+argu+'"]');
+                switchTrigger(triggerElement);
             },
             listGrip: function () {
                 codeList.showList();
@@ -55,14 +59,14 @@ require(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/k
                 keyM = new keyMap();
             while (++i < len) {
                 action = nodeList[i].getAttribute("data-action");
-                argu = nodeList[i].getAttribute("data-action-argu");
+                argu = nodeList[i].getAttribute("data-argu");
                 if (!action)continue;
                 (function (action, argu) {
                     nodeList[i].addEventListener("click", function (event) {
                         event.srcElement = event.srcElement || event.target;
                         handlerMap[action](event, argu);
                     });
-                    keys = nodeList[i].getAttribute("data-action-keymap");
+                    keys = nodeList[i].getAttribute("data-keymap");
                     if (keys) {
                         keyM.keyBind(keys.split('+'), function (e) {
                             handlerMap[action](e, argu);
@@ -71,6 +75,18 @@ require(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/k
                 })(action, argu);
 
             }
+        }
+
+        function switchTrigger(triggerElement)
+        {
+            if(triggerElement.getAttribute("data-on")!=="true")
+            {
+                triggerElement.setAttribute("data-on","true");
+            }
+            else{
+                triggerElement.setAttribute("data-on","false");
+            }
+
         }
 
         binder();

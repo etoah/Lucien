@@ -100,7 +100,8 @@ define(['rsvp'],function(rsvp){
             , false, false, false, false, 0, null
         );
         obj.dispatchEvent(ev);
-    }function exportRaw(name, data) {
+    };
+    function exportRaw(name, data) {
         var urlObject = window.URL || window.webkitURL || window;
         var export_blob = new Blob([data]);
         var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a");

@@ -19,13 +19,13 @@
 <div class="wrap">
     <nav class="nav" id="nav_js">
         <ul class="nav-action">
-            <li><span  data-action="newCase" data-action-keymap="alt+n" class="icon icon-new"></span></li>
-            <li><span  data-action="save" data-action-keymap="alt+s" class="icon icon-save"></span></li>
-            <li><span  data-action="play" data-action-keymap="alt+r" class="icon icon-play"></span></li>
-            <li><span  data-action="toggle" data-action-keymap="alt+h"  data-action-argu="html"  class="icon">HTML</span></li>
-            <li><span  data-action="toggle" data-action-keymap="alt+c" data-action-argu="css" class="icon">CSS</span></li>
-            <li><span  data-action="toggle" data-action-keymap="alt+j" data-action-argu="js" class="icon">Javascript</span></li>
-            <li><span  data-action="delCase" data-action-keymap="ctrl+alt+d" class="icon icon-del"></span></li>
+            <li><span  data-action="newCase" data-keymap="alt+n" class="icon icon-new"></span></li>
+            <li><span  data-action="save" data-keymap="alt+s" class="icon icon-save"></span></li>
+            <li><span  data-action="play" data-keymap="alt+r" class="icon icon-play"></span></li>
+            <li><span  data-action="toggle" data-keymap="alt+h"  data-argu="html"  class="icon" data-on="true">HTML</span></li>
+            <li><span  data-action="toggle" data-keymap="alt+c" data-argu="css" class="icon" data-on="true">CSS</span></li>
+            <li><span  data-action="toggle" data-keymap="alt+j" data-argu="js" class="icon" >Javascript</span></li>
+            <li><span  data-action="delCase" data-keymap="ctrl+alt+d" class="icon icon-del"></span></li>
             <li><span  data-action="export"  class="icon icon-down"></span></li>
         </ul>
     </nav>
@@ -37,16 +37,16 @@
     </aside>
     <section id="editors" class="container editors">
         <div class="editor">
-            <span class="code-tag" data-action="format" data-action-keymap="ctrl+alt+h" data-action-argu="html">html</span>
+            <span class="code-tag" data-action="format" data-keymap="ctrl+alt+h" data-argu="html">html</span>
             <textarea id="html" name="code"></textarea>
         </div>
         <div class="editor">
-            <span class="code-tag" data-action="format" data-action-keymap="ctrl+alt+c" data-action-argu="css">css</span>
+            <span class="code-tag" data-action="format" data-keymap="ctrl+alt+c" data-argu="css">css</span>
             <textarea id="css" name="code"></textarea>
 
         </div>
-        <div class="editor">
-            <span class="code-tag" data-action="format" data-action-keymap="ctrl+alt+j" data-action-argu="js">javascript</span>
+        <div class="editor"  style="display: none;">
+            <span class="code-tag" data-action="format" data-keymap="ctrl+alt+j" data-argu="js">javascript</span>
             <textarea id="javascript" name="code"></textarea>
 
         </div>
@@ -56,7 +56,7 @@
         <iframe id="resultframe" frameborder="0"></iframe>
 
     </section>
-    <div id="listGrip"><span data-action="listGrip" data-action-keymap="alt+l"  class="icon icon-list"></span></div>
+    <div id="listGrip"><span data-action="listGrip" data-keymap="alt+l"  class="icon icon-list"></span></div>
 
     <p id="notice" style="display: none;">
     </p>

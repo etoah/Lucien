@@ -14,11 +14,9 @@
     line-height: 30px;
     padding:0 5px;
 }
-.nav-action>li:hover
+.nav-action>li:hover,[data-on='true']
 {
     color: #fff;
-    font-size: 22px;
-
 }
 
 
