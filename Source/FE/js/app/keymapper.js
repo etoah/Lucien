@@ -83,9 +83,7 @@ define(function () {
         var len = keys.length,
             i = 0;
         if (typeof keys == 'string' || len == 1) {
-
             return e.which == keyCodeMap[keys];
-
         }
         else if (e.altKey || e.ctrlKey || e.shiftKey) {
             for (; i < commandKey.length; i++)//最后一个为非功能键

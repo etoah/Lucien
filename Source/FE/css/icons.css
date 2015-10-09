@@ -3,7 +3,7 @@
     src: url('icons.woff') format('woff');
 }
 
-.icon {
+[class^="icon-"], [class*=" icon-"]{
     position: relative;
     top: 1px;
     display: inline-block;
@@ -37,4 +37,9 @@
 
 .icon-list:before {
     content: "\e012";
+}
+
+.icon-config
+{
+    content: "\e019";
 }

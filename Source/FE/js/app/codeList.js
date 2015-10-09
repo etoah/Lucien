@@ -9,6 +9,7 @@ define(['app/Code', 'app/editor',"local","app/config"], function (Code, editor,l
         LI_TEMPLETA = "<li data-id='{0}' title='{1}' class='{2}'>{1}</li>",
         ul = document.getElementById("codeUL");
 
+
     function togglePanel() {
 
         if (listPanel.style.display) {
