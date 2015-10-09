@@ -54,11 +54,10 @@
 .code-tag
 {
     position: absolute;
-
     top:-3px;
     right: 25px;
     color: #806060;/*TODO:theme #ddd*/
-    z-index: 1001;
+    z-index: 98;
     font-size: 0.8em;
     font-family: Microsoft YaHei,"微软雅黑";
     cursor: pointer;
