@@ -5,7 +5,7 @@ define(function () {
 
     var noticeEle = document.getElementById("notice"),
         cancel_html = "<span class='notice-cancel' data-action='cancel'>撤消</span>",
-        nDelay = 1000;
+        nDelay = 4000;
 
     function notice(html, styleClass, delay) {
         noticeEle.className = styleClass;

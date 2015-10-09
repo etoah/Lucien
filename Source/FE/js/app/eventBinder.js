@@ -50,7 +50,7 @@ require(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/k
                 notice.confirm(function () {
                     editor.newCase();
                     new Code().delete(parseInt(local(config.storeKey)) || 0);
-                }, "删除成功", 3000);
+                }, "删除成功", 5500);
             },
             save: function () {
                 Code.save(editor).then(function () {
