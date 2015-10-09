@@ -11,7 +11,7 @@
     line-height: 30px;
     width: 100%;
     background: #2c2827;/*TODO:theme*/
-    font-family: Microsoft YaHei, "ÃƒÂ¥Ã‚Â¾Ã‚Â®ÃƒÂ¨Ã‚Â½Ã‚Â¯ÃƒÂ©Ã¢â‚¬ÂºÃ¢â‚¬Â¦ÃƒÂ©Ã‚Â»Ã¢â‚¬Ëœ";
+    font-family: Microsoft YaHei, "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¥ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â®ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¨ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂºÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¹Ã…â€œ";
 
 
 }
@@ -33,7 +33,8 @@
 }
 
 
-#listPanel
+
+#listPanel,#configPanel
 {
 
     position: relative;
@@ -44,8 +45,13 @@
     color: #fff;
     z-index: 99;
     overflow: auto;
-    font-family: Microsoft YaHei,"ÃƒÂ¥Ã‚Â¾Ã‚Â®ÃƒÂ¨Ã‚Â½Ã‚Â¯ÃƒÂ©Ã¢â‚¬ÂºÃ¢â‚¬Â¦ÃƒÂ©Ã‚Â»Ã¢â‚¬Ëœ";
+    font-family: Microsoft YaHei,"微软雅黑";
 
+}
+
+#configPanel
+{
+    float: right;
 }
 
 .code-list
@@ -55,7 +61,7 @@
 
 }
 
-.code-list>li
+.code-list>li,.config-list>li
 {
     cursor: pointer;
     line-height: 1.5em;
@@ -69,12 +75,12 @@
     color: #008855;
 }
 
-#listGrip
+#listGrip,#configGrip
 {
     display: block;
     position: fixed;
     padding: 3px 8px 2px 0;
-    border-radius: 0 6px 6px 0;
+
     top: 4px;
     z-index: 100;
     cursor: pointer;
@@ -83,7 +89,15 @@
 
     font-size: 20px;
 }
-
+#listGrip
+{
+    border-radius: 0 6px 6px 0;
+}
+#configGrip
+{
+    right: 0;
+    border-radius:6px 0  0 6px;
+}
 
 #notice
 {
@@ -94,7 +108,7 @@
     z-index: 1001;
     padding: 8px 35px 8px 14px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    font:normal normal  bolder 1em/2em Microsoft YaHei,"Ã¥Â¾Â®Ã¨Â½Â¯Ã©â€ºâ€¦Ã©Â»â€˜";
+    font:normal normal  bolder 1em/2em Microsoft YaHei,"ÃƒÆ’Ã‚Â¥Ãƒâ€šÃ‚Â¾Ãƒâ€šÃ‚Â®ÃƒÆ’Ã‚Â¨Ãƒâ€šÃ‚Â½Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã‚Â©ÃƒÂ¢Ã¢â€šÂ¬Ã‚ÂºÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â©Ãƒâ€šÃ‚Â»ÃƒÂ¢Ã¢â€šÂ¬Ã‹Å“";
     text-align: center;
     opacity:0;
 }

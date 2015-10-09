@@ -39,7 +39,7 @@
     content: "\e012";
 }
 
-.icon-config
+.icon-config:before
 {
     content: "\e019";
 }

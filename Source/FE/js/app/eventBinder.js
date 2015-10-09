@@ -23,10 +23,29 @@ require(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/k
                 var triggerElement=event.type==="click"?event.srcElement:document.querySelector('[data-action="toggle"][data-argu="'+argu+'"]');
                 switchTrigger(triggerElement);
             },
-            listGrip: function () {
+            listGrip: function (event) {
                 codeList.showList();
                 event.stopPropagation();
             },
+            configGrip:(function(){
+
+                var configPanel = document.getElementById("configPanel");
+                configPanel.addEventListener('click',function(event){event.stopPropagation();});
+                function hidePanel(){
+                    configPanel.style.display = "";
+                }
+                return function(e){
+                    if (configPanel.style.display) {
+                        configPanel.style.display = "";
+                        document.removeEventListener("click", hidePanel);
+                    }
+                    else {
+                        configPanel.style.display = "block";
+                        document.addEventListener("click", hidePanel);
+                    }
+                    e.stopPropagation();
+                }
+            })(),
             delCase: function () {
                 notice.confirm(function () {
                     editor.newCase();
