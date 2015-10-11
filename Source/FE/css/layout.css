@@ -1,3 +1,6 @@
+body{
+    font-family: Microsoft YaHei, "微软雅黑";
+}
 .wrap {
     position: absolute;
     width: 100%;
@@ -11,7 +14,6 @@
     line-height: 30px;
     width: 100%;
     background: #2c2827;/*TODO:theme*/
-    font-family: Microsoft YaHei, "微软雅黑";
 }
 
 .container {
@@ -43,7 +45,6 @@
     color: #fff;
     z-index: 99;
     overflow: auto;
-    font-family: Microsoft YaHei,"微软雅黑";
 
 }
 
@@ -109,7 +110,7 @@
     z-index: 1001;
     padding: 8px 35px 8px 14px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    font:normal normal  bolder 1em/2em Microsoft YaHei,"ÃƒÆ’Ã‚Â¥Ãƒâ€šÃ‚Â¾Ãƒâ€šÃ‚Â®ÃƒÆ’Ã‚Â¨Ãƒâ€šÃ‚Â½Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã‚Â©ÃƒÂ¢Ã¢â€šÂ¬Ã‚ÂºÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â©Ãƒâ€šÃ‚Â»ÃƒÂ¢Ã¢â€šÂ¬Ã‹Å“";
+    font:normal normal  bolder 1em/2em inherit;
     opacity:0;
 }
 

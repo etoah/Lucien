@@ -32,7 +32,7 @@
 }
 
 .icon-new:before {
-    content: "\2b";
+    content: "\e022";
 }
 
 .icon-list:before {
@@ -42,4 +42,8 @@
 .icon-config:before
 {
     content: "\e019";
+}
+.icon-copy:before
+{
+    content: "\e224";
 }

@@ -143,6 +143,9 @@ define(['codemirror', 'local', 'app/Code', 'app/config', 'htmlmixed', 'xml', 'cs
                 this.html.setValue("");
                 this.css.setValue("");
                 this.js.setValue("");
+            },
+            copy:function(){
+                local(config.storeKey, 'null');
             }
         }
 

@@ -18,6 +18,10 @@ require(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/k
             newCase: function () {
                 editor.newCase(true);
             },
+            copy: function () {
+                editor.copy();
+                notice.success("已复制，并新建文档");
+            },
             toggle: function (event, argu) {
                 editor.toggle(argu,event.srcElement);
                 var triggerElement=event.type==="click"?event.srcElement:document.querySelector('[data-action="toggle"][data-argu="'+argu+'"]');
