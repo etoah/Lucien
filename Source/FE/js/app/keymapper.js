@@ -86,7 +86,7 @@ define(function () {
             return e.which == keyCodeMap[keys];
         }
         else if (e.altKey || e.ctrlKey || e.shiftKey) {
-            for (; i < commandKey.length; i++)//最后一个为非功能键
+            for (; i < commandKey.length; i++)
             {
                 if ((keys.indexOf(commandKey[i])===-1&&e[commandKey[i] + 'Key'])||(keys.indexOf(commandKey[i])!==-1&&!e[commandKey[i] + 'Key'])) {
                     return false;

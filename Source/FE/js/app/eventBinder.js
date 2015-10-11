@@ -51,8 +51,8 @@ require(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/k
                 }
             })(),
             delCase: function () {
+                editor.newCase();
                 notice.confirm(function () {
-                    editor.newCase();
                     new Code().delete(parseInt(local(config.storeKey)) || 0);
                 }, "删除成功", 5500);
             },
