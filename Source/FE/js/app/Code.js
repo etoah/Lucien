@@ -12,7 +12,7 @@ define(['entity', 'local', 'app/config', 'Util'], function (Entity, local, confi
         this.entity.html = html;
         this.entity.css = css;
         this.entity.js = js;
-        this.entity.title=html&&(html.removeTag().replace(/(\n)+|(\r\n)+|\s+/g,'').substring(0,TITLE_LENGTH)+"...");
+        this.entity.title=this.entity.title||(html&&(html.removeTag().replace(/(\n)+|(\r\n)+|\s+/g,'').substring(0,TITLE_LENGTH)+"..."));
         this.entity.tag = tag;
         id&&(this.entity.id=id);
 

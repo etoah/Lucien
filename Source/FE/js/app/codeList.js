@@ -15,10 +15,12 @@ define(['app/Code', 'app/editor',"local","app/config"], function (Code, editor,l
         if (listPanel.style.display) {
             listPanel.style.display = "";
             document.removeEventListener("click", hidePanel);
+            window.frames[0].document.removeEventListener("click", hidePanel);
         }
         else {
             listPanel.style.display = "block";
             document.addEventListener("click", hidePanel);
+            window.frames[0].document.addEventListener("click", hidePanel);
         }
     }
 
@@ -31,7 +33,10 @@ define(['app/Code', 'app/editor',"local","app/config"], function (Code, editor,l
                 ele&&(ele.className="");
                 src.className="list-active";
                 id = parseInt(src.getAttribute("data-id")) || 0;
-                editor.init(id);
+                editor.init(id).then(function(){
+                    window.frames[0].document.addEventListener("click", hidePanel);
+                });
+
             }
             event.stopPropagation();
         });

@@ -80,7 +80,8 @@ define(['codemirror', 'local', 'app/Code', 'app/config', 'htmlmixed', 'xml', 'cs
 
         function init(id) {
 
-            new Code().get(id || parseInt(local(config.storeKey)) || 0).then((function (that) {
+
+          return  new Code().get(id || parseInt(local(config.storeKey)) || 0).then((function (that) {
                 return function (entity) {
                     if (entity) {
                         that.html.setValue(entity.html);
@@ -92,7 +93,12 @@ define(['codemirror', 'local', 'app/Code', 'app/config', 'htmlmixed', 'xml', 'cs
                             that.play(true);
                             styleToggle(true);
                         }
+
+
                     }
+                    return new Promise(function(resolve, reject){
+                        resolve(entity);
+                    });
 
 
                 }
