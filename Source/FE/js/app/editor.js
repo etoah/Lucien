@@ -87,16 +87,18 @@ define(['codemirror', 'local', 'app/Code', 'app/config', 'htmlmixed', 'xml', 'cs
                         that.css.setValue(entity.css);
                         that.js.setValue(entity.js);
                         local(config.storeKey, entity.id);
+
+                        if (local(STATUS_KEY) === "true") {
+                            that.play(true);
+                            styleToggle(true);
+                        }
                     }
 
 
                 }
             })(this));
 
-            if (local(STATUS_KEY) === "true") {
-                this.play(true);
-                styleToggle(true);
-            }
+
         }
 
         function format(editor) {
