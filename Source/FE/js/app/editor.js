@@ -65,17 +65,20 @@ define(['codemirror', 'local', 'app/Code', 'app/config', 'htmlmixed', 'xml', 'cs
                 resultStyle.display = "none";
                 //playEle.className = "play";
                 local(STATUS_KEY, false);
+                //防止出现从Review 页切换到editor页不能马上显示的问题
+                htmlEditor.execCommand('goDocStart');
+                cssEditor.execCommand('goDocStart');
+                jsEditor.execCommand('goDocStart');
                 return true;
             }
             else {
                 editorsStyle.display = "none";
                 resultStyle.display = "block";
                 // playEle.className = "stop";
+
                 local(STATUS_KEY, true);
                 return false;
             }
-
-
         }
 
         function init(id) {
@@ -114,15 +117,21 @@ define(['codemirror', 'local', 'app/Code', 'app/config', 'htmlmixed', 'xml', 'cs
         }
 
         function toggle(type) {
-            var element;
+            var element,Editor;
             if (type === "html") {
                 element = html_e;
+                //防止出现从Review 页切换到editor页不能马上显示的问题
+                Editor=htmlEditor;
             }
             else if (type === "css") {
                 element = css_e;
+                //防止出现从Review 页切换到editor页不能马上显示的问题
+                Editor=cssEditor;
             }
             else {
                 element = js_e;
+                //防止出现从Review 页切换到editor页不能马上显示的问题
+                Editor=jsEditor;
             }
             if (element.parentNode.style.display != "none") {
                 element.parentNode.style.display = "none";
@@ -132,6 +141,8 @@ define(['codemirror', 'local', 'app/Code', 'app/config', 'htmlmixed', 'xml', 'cs
             else {
 
                 element.parentNode.style.display = "block";
+                //防止出现从Review 页切换到editor页不能马上显示的问题
+                Editor.execCommand('goDocStart');
             }
 
         }
