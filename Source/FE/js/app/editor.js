@@ -36,7 +36,7 @@ define(['codemirror', 'local', 'app/Code', 'app/config', 'htmlmixed', 'xml', 'cs
         });
 
 
-        window["CodeMirror"] = CodeMirror;//emmet 插件需要全局的变量
+        window["CodeMirror"] = CodeMirror;//emmet 插件需要全局的变量 TOdo:需优化
 
         function play(mustRun) {
             if (!mustRun && local(STATUS_KEY) === "true")return;

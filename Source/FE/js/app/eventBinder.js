@@ -3,7 +3,7 @@
  */
 
 
-require(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/keymapper', 'app/notice', 'Util'],
+define(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/keymapper', 'app/notice', 'Util'],
     function (Code, editor, local, config, codeList, keyMap, notice, util) {
 
 
@@ -119,4 +119,5 @@ require(['app/Code', 'app/editor', 'local', 'app/config', 'app/codeList', 'app/k
         });//=alt+l方便单手操作
 
 
+        return handlerMap;
     });

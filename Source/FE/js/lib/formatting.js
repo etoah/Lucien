@@ -1,4 +1,4 @@
-(function () {
+define(['codemirror'],function (CodeMirror) {
     CodeMirror.extendMode("css", {
         commentStart: "/*", commentEnd: "*/", newlineAfterToken: function (type, content) {
             return /^[;{}]$/.test(content);
@@ -83,4 +83,4 @@
             cm.setSelection(from, cm.getCursor(false));
         });
     });
-})();
+});
