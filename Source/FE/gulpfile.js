@@ -46,21 +46,26 @@ gulp.task('css', function () {
         .pipe(notify({message: 'Styles task complete'}));
 });
 
-gulp.task('copy', function () {
+gulp.task('copyFont', function () {
     return gulp.src(['css/icons.woff'])
         .pipe(gulp.dest(config.cssPath));
 });
+gulp.task('copy', function () {
+    return gulp.src(['editor.appcache','demo.html'])
+        .pipe(gulp.dest(config.target));
+});
+
 
 // 脚本
-
-gulp.task('require', function () {
+gulp.task('rjs', shell.task(['node js/r.js -o js/build.js']));
+gulp.task('js', function () {
     return gulp.src('js/require.js')
         .pipe(uglify())
         .pipe(gulp.dest(config.jsPath))
         .pipe(notify({message: 'require task complete'}));
 });
 
-gulp.task('rjs', shell.task(['node js/r.js -o js/build.js']));
+
 
 // 清理
 gulp.task('clean', function () {
@@ -70,7 +75,7 @@ gulp.task('clean', function () {
 
 // 预设任务
 gulp.task('default', ['clean'], function () {
-    gulp.start('html', 'css','copy','require', 'rjs');
+    gulp.start('html', 'css','copy','copyFont','rjs', 'js');
 });
 
 // 看手
