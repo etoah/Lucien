@@ -26,6 +26,7 @@ var config={
 
 gulp.task('html', function () {
     return gulp.src('index.html')
+        .pipe(greplace('<html>','<html manifest="editor.appcache">'))
         .pipe(greplace(/<link rel=.*>/g, ''))
         .pipe(greplace('</head>', '<link rel="stylesheet" href="css/'+config.cssName+'"/></head>'))
         .pipe(htmlmin({collapseWhitespace: true}))
