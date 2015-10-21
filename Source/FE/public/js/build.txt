@@ -24,11 +24,11 @@ app/codeList.js
 app/keymapper.js
 app/notice.js
 app/eventBinder.js
-emmet.js
 show-hint.js
 javascript-hint.js
 anyword-hint.js
 formatting.js
 matchtags.js
 session.js
+emmet.js
 main.js
