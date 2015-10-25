@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 #Lucien
+=======
+
+
+FrontEnd Editor
+
