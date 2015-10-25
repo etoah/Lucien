@@ -47,7 +47,7 @@ FrontEnd Editor
 所以就把所学的做了一个项目：
 
 所用的技术
-* Requirejs 模块化编程
+* Requirejs 前端组件化
 * Promise异步编程
 * Web Storge
 * indexDB
