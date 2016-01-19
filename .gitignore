@@ -21,7 +21,13 @@ node_modules
 npm-debug.log
 /Source/FE/.idea/workspace.xml
 /Source/FE/.idea
-/Doc
 /Source/FE/node_modules
 /Releases
 /Reference
+/.idea/.name
+/.idea/WebEditor.iml
+/.idea/encodings.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
