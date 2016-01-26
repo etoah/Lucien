@@ -17,7 +17,7 @@ body{
 }
 
 .container {
-    position: relative;
+    position: relative; /*设置为绝对定位，此属性无效*/
     width: 100%;
 }
 

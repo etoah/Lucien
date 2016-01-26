@@ -1,12 +1,19 @@
 
 #用H5打造一个离线的Web编辑器
 
+##目录
+    - 一背景
+
 ## 一. 背景
 
-看好H5的发展，个人认为h5带给我们最大的好处，是以后web app既可以有c/s模式的原生应用一样的优点：有本地数据库indexDB,离线操作在线同步，又可以免下载易嵌入易排板跨平台推广更方便。   
+个人看好H5的发展，个人认为h5带给我们最大的好处，是以后web app既可以有c/s模式的原生应用一样的优点：有本地数据库indexDB,离线操作在线同步，又可以免下载易嵌入易排板跨平台推广更方便。   
  一个C/S App，不考虑流量资费,从用户点击下载到App成功启动，至少要1分钟，中间可能还要人为操作点数次。而H5做的Web App,可边展示边加载，首屏加载只要2s内.  
  首屏加载完成后，可开始动态的加载其它资源：同步indexDB,缓存其它页面的css,js,img，达到每个页面都可以“秒进”的效果。
  本人之前做的是后端项目，看好H5的发展,这是一个H5练手的项目，一个基于CodeMirrir的Web可离线编辑器，与大家分享。
+ 
+ 首先说一说实现的特性和效果，再从技术的细节分析各个模块的实现和部份性能优化。
+ 
+
  
  Github:https://github.com/etoah/Lucien
 
@@ -32,7 +39,43 @@
 Demo地址：http://fer.ren/Lucien/
 
 
-    
+## 布局
+
+对于一个项目首先映入眼帘的
+![layout](layout.jpg)
+
+布局用的是CSS3的弹性布局。为了实现导航栏和内容页(编辑器)布满屏幕，同时减少repaint和redraw的影响。主要的上下栏布局的方法是弹性布局。
+代码如下：
+```css
+.nav {
+    position: absolute;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    background: #2c2827;/*TODO:theme*/
+}
+.editors
+{
+    position: absolute;
+    top: 30px;
+    bottom: 0;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content:flex-end;
+    background: #2c2827;/*TODO:theme*/
+}
+
+```
+
+
+而对于CSS编辑窗口，CSS3的弹性布局可很方便的实现，自动充满
+
+
+##交互事件绑定和快捷键
+
+
+##提示和动画
 
 ## 三. 存储：indexDB
 
@@ -125,7 +168,11 @@ Code.prototype.add = function () {
     };
 ```
 
+###storage存储
 
+
+##通迅
+用worker通讯
 
 
 ## 四. 模块化和打包
@@ -196,4 +243,8 @@ gulp.task('js', function () {
 
 1. 云端同步。由于本人原来是做后端，这一步太熟悉了反而没有兴趣去实现。后面可能会实现这个功能。
 
-此项目持续更新中。
+
+
+## 总结
+
+这次总结，比较随意，只有部份的技术要点，没有清晰的思路，此项目持续更新中。
