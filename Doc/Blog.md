@@ -171,8 +171,13 @@ Code.prototype.add = function () {
 ###storage存储
 
 
-##通迅
-用worker通讯
+##通迅:work实现多线程
+数据我们存储在client的indexDB，如果我们要实现server与client可以相互同步，就要考虑可服务性和性能的问题了。
+如果需要同步，我们就要对比client和server的数据的时间戳，以最新的为准，如果同步一两个数据，由于indexDB和request都是异步的，
+页面即不会卡住，可步的时间点也可控。
+
+但是问题来了，如果我要同步1000条数据呢。
+
 
 
 ## 四. 模块化和打包
